@@ -90,7 +90,30 @@ class CarCard extends StatelessWidget {
                         )),
                   ],
                 ),
-                Text('\$${price.toStringAsFixed(2)} per day'),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'IDR ${price.toStringAsFixed(0)}K',
+                        style: const TextStyle(
+                          color: Colors.blue,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 0.14,
+                        ),
+                      ),
+                      const TextSpan(
+                        text: '/day',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: 0.14,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ],
