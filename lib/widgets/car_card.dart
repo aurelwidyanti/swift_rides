@@ -96,17 +96,17 @@ class CarCard extends StatelessWidget {
                       TextSpan(
                         text: 'IDR ${price.toStringAsFixed(0)}K',
                         style: const TextStyle(
-                          color: Colors.blue,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
+                          color: Color.fromRGBO(23, 93, 227, 1),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
                           letterSpacing: 0.14,
                         ),
                       ),
                       const TextSpan(
                         text: '/day',
                         style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
+                          color: Color.fromRGBO(178, 176, 176, 1),
+                          fontSize: 16,
                           fontWeight: FontWeight.w400,
                           letterSpacing: 0.14,
                         ),
