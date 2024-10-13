@@ -69,6 +69,13 @@ class HomeScreen extends StatelessWidget {
                         imageUrl: 'assets/img/3.png',
                         price: 700,
                         fuel: 'Petrol'),
+                    CarCard(
+                        rating: 4.7,
+                        name: 'BMW',
+                        type: 'M4 Convertible',
+                        imageUrl: 'assets/img/2.png',
+                        price: 800,
+                        fuel: 'Diesel'),
                   ],
                 ),
               ],
