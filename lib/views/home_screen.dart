@@ -1,101 +1,76 @@
 import 'package:flutter/material.dart';
 import '../widgets/car_card.dart';
+import 'package:hugeicons/hugeicons.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.4),
-              child: Row(
-                children: [
-                  Icon(Icons.location_on, size: 30, color: Colors.grey),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Choose Location',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 10),
-                      _locationPicker(),
-                    ],
-                  ),
-                ],
-              ),
+    return const Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(24, 64, 24, 0),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    HugeIcon(
+                      icon: HugeIcons.strokeRoundedLocation04,
+                      color: Color.fromRGBO(167, 167, 167, 1),
+                      size: 28,
+                    ),
+                    SizedBox(width: 12),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Your Location',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                            color: Color.fromRGBO(167, 167, 167, 1),
+                          ),
+                        ),
+                        Text(
+                          'Semarang, Indonesia',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.normal),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: 40),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Recommendation',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    CarCard(
+                        rating: 4.9,
+                        name: 'BMW',
+                        type: 'M4 Coupé',
+                        imageUrl: 'assets/img/1.png',
+                        price: 2000),
+                    CarCard(
+                        rating: 4.8,
+                        name: 'BMW',
+                        type: 'M2 Coupé',
+                        imageUrl: 'assets/img/3.png',
+                        price: 2000),
+                  ],
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Recommended Cars',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 10),
-                  _recommendedCarsList(),
-                ],
-              ),
-            ),
-          ],
+          ),
         ),
-      ),
-    );
-  }
-
-  Widget _locationPicker() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.0),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-          items: <String>['New York', 'Los Angeles', 'Chicago', 'Miami']
-              .map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-          onChanged: (String? newValue) {
-            // Handle location change
-          },
-          hint: Text('Select your location'),
-        ),
-      ),
-    );
-  }
-
-  Widget _recommendedCarsList() {
-    return SizedBox(
-      height: 300,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: [
-          CarCard(
-            name: 'Ferrari F8',
-            imageUrl: 'https://linktoimage.com/ferrari.jpg',
-            price: 1500,
-          ),
-          CarCard(
-            name: 'Porsche 911',
-            imageUrl: 'https://linktoimage.com/porsche.jpg',
-            price: 2000,
-          ),
-          CarCard(
-            name: 'Lamborghini Aventador',
-            imageUrl: 'https://linktoimage.com/lamborghini.jpg',
-            price: 2500,
-          ),
-        ],
       ),
     );
   }
