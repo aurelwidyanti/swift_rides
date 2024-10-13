@@ -93,22 +93,6 @@ class CarCard extends StatelessWidget {
                 Text('\$${price.toStringAsFixed(2)} per day'),
               ],
             ),
-            ButtonBar(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/car-detail');
-                  },
-                  child: const Text('Details'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/booking');
-                  },
-                  child: const Text('Rent Now'),
-                ),
-              ],
-            ),
           ],
         ),
       ),
