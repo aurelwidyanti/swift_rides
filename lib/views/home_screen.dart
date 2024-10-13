@@ -5,13 +5,15 @@ import 'package:hugeicons/hugeicons.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  get fuel => null;
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(24, 64, 24, 0),
+          padding: EdgeInsets.fromLTRB(24, 64, 24, 24),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,15 +58,17 @@ class HomeScreen extends StatelessWidget {
                     CarCard(
                         rating: 4.9,
                         name: 'BMW',
-                        type: 'M4 Coupé',
+                        type: 'M4 Competition M xDrive',
                         imageUrl: 'assets/img/1.png',
-                        price: 800),
+                        price: 800,
+                        fuel: 'Diesel'),
                     CarCard(
                         rating: 4.8,
                         name: 'BMW',
                         type: 'M2 Coupé',
                         imageUrl: 'assets/img/3.png',
-                        price: 700),
+                        price: 700,
+                        fuel: 'Petrol'),
                   ],
                 ),
               ],
