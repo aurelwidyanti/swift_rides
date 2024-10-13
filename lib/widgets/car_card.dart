@@ -8,6 +8,7 @@ class CarCard extends StatelessWidget {
   final String type;
   final double price;
   final double rating;
+  final String fuel;
 
   const CarCard(
       {super.key,
@@ -15,7 +16,8 @@ class CarCard extends StatelessWidget {
       required this.name,
       required this.type,
       required this.price,
-      required this.rating});
+      required this.rating,
+      required this.fuel});
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +118,73 @@ class CarCard extends StatelessWidget {
                 ),
               ],
             ),
+            const Divider(
+              color: Color.fromRGBO(216, 234, 233, 1),
+              thickness: 1,
+            ),
+            Row(
+              children: [
+                Row(
+                  children: [
+                    const HugeIcon(
+                      icon: HugeIcons.strokeRoundedFuelStation,
+                      color: Color.fromRGBO(23, 93, 227, 1),
+                      size: 24,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      fuel,
+                      style: const TextStyle(
+                        color: Color.fromRGBO(178, 176, 176, 1),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0.14,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 16),
+                const Row(
+                  children: [
+                    HugeIcon(
+                      icon: HugeIcons.strokeRoundedUser,
+                      color: Color.fromRGBO(23, 93, 227, 1),
+                      size: 21,
+                    ),
+                    SizedBox(width: 8),
+                    Text(
+                      '2',
+                      style: TextStyle(
+                        color: Color.fromRGBO(178, 176, 176, 1),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0.14,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 16),
+                const Row(
+                  children: [
+                    HugeIcon(
+                      icon: HugeIcons.strokeRoundedCar02,
+                      color: Color.fromRGBO(23, 93, 227, 1),
+                      size: 24,
+                    ),
+                    SizedBox(width: 8),
+                    Text(
+                      'Auto',
+                      style: TextStyle(
+                        color: Color.fromRGBO(178, 176, 176, 1),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0.14,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            )
           ],
         ),
       ),
