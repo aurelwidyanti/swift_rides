@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                         type: 'M4 Competition M xDrive',
                         imageUrl: 'assets/img/1.png',
                         price: 800,
-                        fuel: 'Diesel'),
+                        fuel: 'Petrol'),
                     CarCard(
                         rating: 4.8,
                         name: 'BMW',
@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                         type: 'M4 Convertible',
                         imageUrl: 'assets/img/2.png',
                         price: 800,
-                        fuel: 'Diesel'),
+                        fuel: 'Petrol'),
                   ],
                 ),
               ],

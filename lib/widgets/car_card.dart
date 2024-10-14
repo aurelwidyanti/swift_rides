@@ -69,7 +69,10 @@ class CarCard extends StatelessWidget {
                 ),
               ],
             ),
-            Image.asset(imageUrl),
+            Image.asset(
+              imageUrl,
+              fit: BoxFit.cover,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
