@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:swift_rides/widgets/custom_app_bar.dart';
 
 class CarDetailScreen extends StatelessWidget {
   final String name;
@@ -20,15 +21,7 @@ class CarDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text('Car Detail'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
+      appBar: const CustomAppBar(title: 'Car Detail'),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(24, 64, 24, 24),
