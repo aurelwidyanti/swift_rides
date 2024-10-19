@@ -10,6 +10,7 @@ class CarCard extends StatelessWidget {
   final double rating;
   final String fuel;
   final double seat;
+  final Function onTap;
 
   const CarCard(
       {super.key,
@@ -19,14 +20,13 @@ class CarCard extends StatelessWidget {
       required this.price,
       required this.rating,
       required this.fuel,
-      required this.seat});
+      required this.seat,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.pushNamed(context, '/car-detail');
-      },
+      onTap: () => onTap(),
       child: Card(
         color: Colors.white,
         elevation: 1,
@@ -95,7 +95,7 @@ class CarCard extends StatelessWidget {
                       ),
                       Text(type,
                           style: const TextStyle(
-                            fontSize: 16,
+                            fontSize: 14,
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.14,
                           )),
@@ -158,11 +158,11 @@ class CarCard extends StatelessWidget {
                       const HugeIcon(
                         icon: HugeIcons.strokeRoundedUser,
                         color: Color.fromRGBO(23, 93, 227, 1),
-                        size: 21,
+                        size: 20,
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        seat.toString(),
+                        seat.toStringAsFixed(0),
                         style: const TextStyle(
                           color: Color.fromRGBO(178, 176, 176, 1),
                           fontSize: 14,
@@ -178,7 +178,7 @@ class CarCard extends StatelessWidget {
                       HugeIcon(
                         icon: HugeIcons.strokeRoundedCar02,
                         color: Color.fromRGBO(23, 93, 227, 1),
-                        size: 24,
+                        size: 22,
                       ),
                       SizedBox(width: 8),
                       Text(
