@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swift_rides/views/car_detail_screen.dart';
 import '../widgets/car_card.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -9,16 +10,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(24, 64, 24, 24),
+          padding: const EdgeInsets.fromLTRB(24, 64, 24, 24),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
+                const Row(
                   children: [
                     HugeIcon(
                       icon: HugeIcons.strokeRoundedLocation04,
@@ -46,11 +47,11 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Recommendation',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -63,6 +64,19 @@ class HomeScreen extends StatelessWidget {
                       price: 800,
                       fuel: 'Petrol',
                       seat: 2,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CarDetailScreen(
+                              name: 'BMW',
+                              type: 'M4 Competition M xDrive',
+                              price: 800,
+                              imageUrl: 'assets/img/1.png',
+                            ),
+                          ),
+                        );
+                      },
                     ),
                     CarCard(
                       rating: 4.8,
@@ -72,6 +86,19 @@ class HomeScreen extends StatelessWidget {
                       price: 700,
                       fuel: 'Petrol',
                       seat: 2,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CarDetailScreen(
+                              name: 'BMW',
+                              type: 'M2 Coupé',
+                              price: 700,
+                              imageUrl: 'assets/img/3.png',
+                            ),
+                          ),
+                        );
+                      },
                     ),
                     CarCard(
                       rating: 4.7,
@@ -81,6 +108,19 @@ class HomeScreen extends StatelessWidget {
                       price: 800,
                       fuel: 'Petrol',
                       seat: 2,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CarDetailScreen(
+                              name: 'BMW',
+                              type: 'M4 Convertible',
+                              price: 800,
+                              imageUrl: 'assets/img/2.png',
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
