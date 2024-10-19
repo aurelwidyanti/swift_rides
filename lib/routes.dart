@@ -4,5 +4,10 @@ import 'views/home_screen.dart';
 
 final Map<String, WidgetBuilder> appRoutes = {
   '/': (context) => HomeScreen(),
-  '/car-detail': (context) => CarDetailScreen(),
+  '/car-detail': (context) => const CarDetailScreen(
+        name: '',
+        type: '',
+        price: 0,
+        imageUrl: '',
+      ),
 };
