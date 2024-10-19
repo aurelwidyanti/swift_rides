@@ -88,14 +88,14 @@ class CarCard extends StatelessWidget {
                       Text(
                         name,
                         style: const TextStyle(
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w500,
                           letterSpacing: 0.14,
                         ),
                       ),
                       Text(type,
                           style: const TextStyle(
-                            fontSize: 14,
+                            fontSize: 15,
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.14,
                           )),
@@ -108,7 +108,7 @@ class CarCard extends StatelessWidget {
                           text: 'IDR ${price.toStringAsFixed(0)}K',
                           style: const TextStyle(
                             color: Color.fromRGBO(23, 93, 227, 1),
-                            fontSize: 16,
+                            fontSize: 15,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 0.14,
                           ),
@@ -117,7 +117,7 @@ class CarCard extends StatelessWidget {
                           text: '/day',
                           style: TextStyle(
                             color: Color.fromRGBO(178, 176, 176, 1),
-                            fontSize: 16,
+                            fontSize: 15,
                             fontWeight: FontWeight.w400,
                             letterSpacing: 0.14,
                           ),
