@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swift_rides/views/car_detail_screen.dart';
+import 'package:swift_rides/widgets/custom_bottom_bar.dart';
 import '../widgets/car_card.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -129,6 +130,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: const CustomBottomBar(),
     );
   }
 }
