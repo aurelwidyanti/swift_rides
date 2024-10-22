@@ -172,26 +172,6 @@ class CarCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(width: 16),
-                  const Row(
-                    children: [
-                      HugeIcon(
-                        icon: HugeIcons.strokeRoundedCar02,
-                        color: Color.fromRGBO(23, 93, 227, 1),
-                        size: 22,
-                      ),
-                      SizedBox(width: 8),
-                      Text(
-                        'Auto',
-                        style: TextStyle(
-                          color: Color.fromRGBO(178, 176, 176, 1),
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 0.14,
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               )
             ],
