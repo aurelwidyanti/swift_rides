@@ -57,7 +57,7 @@ class AddressBottomSheet extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const BookingScreen(),
+                    builder: (context) => BookingScreen(),
                   ),
                 );
               },
