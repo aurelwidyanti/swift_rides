@@ -58,20 +58,13 @@ class CarDetailScreen extends StatelessWidget {
   Future<void> _showBookingBottomSheet(BuildContext context) async {
     DateTime? selectedDate = await showModalBottomSheet<DateTime>(
       context: context,
-      isScrollControlled: true, // Allows for larger content
+      isScrollControlled: true,
       backgroundColor: Colors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
       builder: (context) => const CalendarBottomSheet(),
     );
-
-    if (selectedDate != null) {
-      // Handle booking logic with selectedDate
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Date selected: ${selectedDate.toString()}')),
-      );
-    }
   }
 
   @override
