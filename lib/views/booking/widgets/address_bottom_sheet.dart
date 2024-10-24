@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:swift_rides/views/booking/widgets/calendar_bottom_sheet.dart';
+import 'package:swift_rides/widgets/custom_button.dart';
 
 class AddressBottomSheet extends StatelessWidget {
   const AddressBottomSheet({super.key});
@@ -16,6 +18,12 @@ class AddressBottomSheet extends StatelessWidget {
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () {
                   Navigator.pop(context);
+
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (context) => const CalendarBottomSheet(),
+                  );
                 },
               ),
               const Text(
@@ -33,7 +41,7 @@ class AddressBottomSheet extends StatelessWidget {
               hintText: 'Search location',
               prefixIcon: const Icon(Icons.search),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none,
               ),
               filled: true,
@@ -43,15 +51,11 @@ class AddressBottomSheet extends StatelessWidget {
           const SizedBox(height: 24),
           SizedBox(
             width: double.infinity,
-            child: ElevatedButton(
+            child: CustomButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromRGBO(23, 93, 227, 1),
-                foregroundColor: Colors.white,
-              ),
-              child: const Text('Confirm'),
+              text: 'Next',
             ),
           ),
         ],
