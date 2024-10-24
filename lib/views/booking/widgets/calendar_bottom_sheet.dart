@@ -63,9 +63,7 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
                       borderRadius:
                           BorderRadius.vertical(top: Radius.circular(16)),
                     ),
-                    builder: (context) {
-                      return const AddressBottomSheet();
-                    },
+                    builder: (context) => const AddressBottomSheet(),
                   );
                 }
               },
