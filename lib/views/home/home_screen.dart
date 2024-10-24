@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:swift_rides/views/home/car_detail_screen.dart';
-import 'package:swift_rides/widgets/custom_bottom_bar.dart';
 import 'widget/car_card.dart';
 import 'package:hugeicons/hugeicons.dart';
 
