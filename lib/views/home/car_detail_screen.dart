@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:swift_rides/widgets/custom_calendar_bottom_sheet.dart';
+import 'package:swift_rides/views/booking/widgets/calendar_bottom_sheet.dart';
 import 'package:swift_rides/widgets/custom_app_bar.dart';
 
 class CarDetailScreen extends StatelessWidget {
@@ -63,7 +63,7 @@ class CarDetailScreen extends StatelessWidget {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
-      builder: (context) => const CustomCalendarBottomSheet(),
+      builder: (context) => const CalendarBottomSheet(),
     );
 
     if (selectedDate != null) {

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-class CustomCalendarBottomSheet extends StatefulWidget {
-  const CustomCalendarBottomSheet({super.key});
+class CalendarBottomSheet extends StatefulWidget {
+  const CalendarBottomSheet({super.key});
 
   @override
-  State<CustomCalendarBottomSheet> createState() =>
-      _CustomCalendarBottomSheetState();
+  State<CalendarBottomSheet> createState() => _CalendarBottomSheetState();
 }
 
-class _CustomCalendarBottomSheetState extends State<CustomCalendarBottomSheet> {
+class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
   DateRangePickerController _datePickerController = DateRangePickerController();
   DateTime? startDate;
   DateTime? endDate;
