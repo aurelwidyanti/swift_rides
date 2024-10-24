@@ -56,7 +56,7 @@ class CarDetailScreen extends StatelessWidget {
   }
 
   Future<void> _showBookingBottomSheet(BuildContext context) async {
-    DateTime? selectedDate = await showModalBottomSheet<DateTime>(
+    showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.white,
