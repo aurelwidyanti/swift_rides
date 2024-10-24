@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swift_rides/views/booking/widgets/address_bottom_sheet.dart';
+import 'package:swift_rides/widgets/custom_button.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class CalendarBottomSheet extends StatefulWidget {
@@ -49,32 +50,26 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
           ),
           SizedBox(
             width: double.infinity,
-            child: ElevatedButton(
+            child: CustomButton(
               onPressed: () {
                 if (startDate != null && endDate != null) {
                   Navigator.pop(context);
 
                   showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.white,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.vertical(top: Radius.circular(16)),
-                      ),
-                      builder: (context) {
-                        return const AddressBottomSheet();
-                      });
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.white,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(16)),
+                    ),
+                    builder: (context) {
+                      return const AddressBottomSheet();
+                    },
+                  );
                 }
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromRGBO(23, 93, 227, 1),
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: const Text("Next"),
+              text: "Next",
             ),
           ),
         ],
