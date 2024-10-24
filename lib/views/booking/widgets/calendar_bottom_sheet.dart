@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swift_rides/views/booking/widgets/address_bottom_sheet.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class CalendarBottomSheet extends StatefulWidget {
@@ -51,8 +52,19 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
             child: ElevatedButton(
               onPressed: () {
                 if (startDate != null && endDate != null) {
-                  Navigator.pop(
-                      context, {'startDate': startDate, 'endDate': endDate});
+                  Navigator.pop(context);
+
+                  showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.white,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(16)),
+                      ),
+                      builder: (context) {
+                        return const AddressBottomSheet();
+                      });
                 }
               },
               style: ElevatedButton.styleFrom(
