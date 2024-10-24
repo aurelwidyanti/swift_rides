@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swift_rides/views/booking/booking_screen.dart';
 import 'package:swift_rides/views/booking/widgets/calendar_bottom_sheet.dart';
 import 'package:swift_rides/widgets/custom_button.dart';
 
@@ -53,7 +54,12 @@ class AddressBottomSheet extends StatelessWidget {
             width: double.infinity,
             child: CustomButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BookingScreen(),
+                  ),
+                );
               },
               text: 'Next',
             ),
