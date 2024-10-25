@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SummaryItem extends StatelessWidget {
-  final String title;
-  final String value;
+  final String? title;
+  final String? value;
   final TextStyle? titleStyle;
   final TextStyle? valueStyle;
   final EdgeInsetsGeometry? padding;
@@ -10,8 +10,8 @@ class SummaryItem extends StatelessWidget {
 
   const SummaryItem({
     Key? key,
-    required this.title,
-    required this.value,
+    this.title,
+    this.value,
     this.titleStyle,
     this.valueStyle,
     this.padding,
@@ -26,7 +26,7 @@ class SummaryItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            title,
+            title ?? '',
             style: titleStyle ??
                 const TextStyle(
                   fontSize: 16,
@@ -36,7 +36,7 @@ class SummaryItem extends StatelessWidget {
           Row(
             children: [
               Text(
-                value,
+                value ?? '',
                 style: valueStyle ??
                     const TextStyle(
                       fontSize: 16,
