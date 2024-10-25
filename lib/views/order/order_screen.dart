@@ -3,9 +3,7 @@ import 'package:swift_rides/views/order/widgets/summary_item.dart';
 import 'package:swift_rides/widgets/custom_app_bar.dart';
 import 'package:swift_rides/widgets/custom_button.dart';
 
-class BookingScreen extends StatelessWidget {
-  const BookingScreen({super.key});
-
+class OrderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +13,7 @@ class BookingScreen extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const SizedBox(height: 24),
             const SummaryItem(title: 'Name', value: 'Giorgano Williams'),
@@ -24,7 +23,7 @@ class BookingScreen extends StatelessWidget {
                 title: 'Address', value: '1234 Swift Street, Swift City'),
             const SummaryItem(title: 'Start Date', value: '25/10/2024'),
             const SummaryItem(title: 'End Date', value: '27/10/2024'),
-            const SizedBox(height: 16),
+            const Spacer(),
             const Divider(),
             const SizedBox(height: 16),
             const SummaryItem(
@@ -51,7 +50,7 @@ class BookingScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Spacer(),
+            const SizedBox(height: 16),
             SizedBox(
               width: double.infinity,
               child: CustomButton(
@@ -59,7 +58,7 @@ class BookingScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const BookingScreen(),
+                      builder: (context) => OrderScreen(),
                     ),
                   );
                 },
