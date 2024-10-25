@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:swift_rides/views/booking/booking_screen.dart';
 import 'package:swift_rides/views/booking/widgets/calendar_bottom_sheet.dart';
+import 'package:swift_rides/widgets/custom_address_card.dart';
 import 'package:swift_rides/widgets/custom_button.dart';
 
-class AddressBottomSheet extends StatelessWidget {
+class AddressBottomSheet extends StatefulWidget {
   const AddressBottomSheet({super.key});
+
+  @override
+  State<AddressBottomSheet> createState() => _AddressBottomSheetState();
+}
+
+class _AddressBottomSheetState extends State<AddressBottomSheet> {
+  String selectedAddress = 'Home';
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +36,7 @@ class AddressBottomSheet extends StatelessWidget {
                 },
               ),
               const Text(
-                'Where are you going?',
+                'Please select your address',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -37,17 +45,43 @@ class AddressBottomSheet extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Search location',
-              prefixIcon: const Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide.none,
+          Wrap(
+            runSpacing: 12,
+            children: [
+              CustomAddressCard(
+                title: 'Home',
+                addressStreet: '1234 Swift Street',
+                addressCity: 'Swift City',
+                isSelected: selectedAddress == 'Home',
+                onSelect: () {
+                  setState(() {
+                    selectedAddress = 'Home';
+                  });
+                },
               ),
-              filled: true,
-              fillColor: const Color.fromRGBO(247, 247, 247, 1),
-            ),
+              CustomAddressCard(
+                title: 'Work',
+                addressStreet: '5678 Swift Street',
+                addressCity: 'Swift City',
+                isSelected: selectedAddress == 'Work',
+                onSelect: () {
+                  setState(() {
+                    selectedAddress = 'Work';
+                  });
+                },
+              ),
+              CustomAddressCard(
+                title: 'Other',
+                addressStreet: '9101 Swift Street',
+                addressCity: 'Swift City',
+                isSelected: selectedAddress == 'Other',
+                onSelect: () {
+                  setState(() {
+                    selectedAddress = 'Other';
+                  });
+                },
+              ),
+            ],
           ),
           const SizedBox(height: 24),
           SizedBox(
@@ -57,11 +91,11 @@ class AddressBottomSheet extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => BookingScreen(),
+                    builder: (context) => const BookingScreen(),
                   ),
                 );
               },
-              text: 'Next',
+              text: 'Confirm',
             ),
           ),
         ],
