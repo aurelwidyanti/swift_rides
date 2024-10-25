@@ -273,8 +273,6 @@ class CarDetailScreen extends StatelessWidget {
                   'Book Now',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
