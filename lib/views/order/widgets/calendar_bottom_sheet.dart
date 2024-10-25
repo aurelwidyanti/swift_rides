@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:swift_rides/views/booking/widgets/address_bottom_sheet.dart';
+import 'package:swift_rides/views/order/widgets/address_bottom_sheet.dart';
 import 'package:swift_rides/widgets/custom_button.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 

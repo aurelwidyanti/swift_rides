@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:swift_rides/views/booking/booking_screen.dart';
-import 'package:swift_rides/views/booking/widgets/calendar_bottom_sheet.dart';
+import 'package:swift_rides/views/order/order_screen.dart';
+import 'package:swift_rides/views/order/widgets/calendar_bottom_sheet.dart';
 import 'package:swift_rides/widgets/custom_address_card.dart';
 import 'package:swift_rides/widgets/custom_button.dart';
 
