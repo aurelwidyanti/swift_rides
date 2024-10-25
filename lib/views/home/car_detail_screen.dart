@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:swift_rides/views/booking/widgets/calendar_bottom_sheet.dart';
+import 'package:swift_rides/views/order/widgets/calendar_bottom_sheet.dart';
 import 'package:swift_rides/widgets/custom_app_bar.dart';
 
 class CarDetailScreen extends StatelessWidget {
