@@ -3,6 +3,7 @@ import 'package:hugeicons/hugeicons.dart';
 
 class HistoryCard extends StatelessWidget {
   final String name;
+  final String type;
   final double seat;
   final double price;
   final double totalcost;
@@ -11,6 +12,7 @@ class HistoryCard extends StatelessWidget {
   const HistoryCard({
     super.key,
     required this.name,
+    required this.type,
     required this.seat,
     required this.price,
     required this.totalcost,
@@ -32,13 +34,25 @@ class HistoryCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                name,
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 0.14,
-                ),
+              Row(
+                children: [
+                  Text(
+                    name,
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 0.14,
+                    ),
+                  ),
+                  Text(
+                    type,
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 0.14,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 12),
               Row(
@@ -48,7 +62,7 @@ class HistoryCard extends StatelessWidget {
                       const HugeIcon(
                         icon: HugeIcons.strokeRoundedSeatSelector,
                         color: Colors.black,
-                        size: 24.0,
+                        size: 22,
                       ),
                       const SizedBox(width: 8),
                       Text(
@@ -68,7 +82,7 @@ class HistoryCard extends StatelessWidget {
                       const HugeIcon(
                         icon: HugeIcons.strokeRoundedDollarCircle,
                         color: Colors.black,
-                        size: 24.0,
+                        size: 22,
                       ),
                       const SizedBox(width: 8),
                       RichText(

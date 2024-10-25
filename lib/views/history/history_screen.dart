@@ -11,15 +11,46 @@ class HistoryScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: CustomAppBar(title: "History"),
       body: Padding(
-        padding: EdgeInsets.all(24),
+        padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              HistoryCard(name: "BMW", seat: 4, price: 800, totalcost: 1000),
-              HistoryCard(name: "BMW", seat: 4, price: 800, totalcost: 1000),
-              HistoryCard(name: "BMW", seat: 4, price: 800, totalcost: 1000),
-              HistoryCard(name: "BMW", seat: 4, price: 800, totalcost: 1000),
-              HistoryCard(name: "BMW", seat: 4, price: 800, totalcost: 1000),
+              HistoryCard(
+                  name: "BMW",
+                  type: "M4 Competition M xDrive",
+                  seat: 4,
+                  price: 800,
+                  totalcost: 1000),
+              HistoryCard(
+                  name: "BMW",
+                  type: "M4 Competition M xDrive",
+                  seat: 4,
+                  price: 800,
+                  totalcost: 1000),
+              HistoryCard(
+                  name: "BMW",
+                  type: "M4 Competition M xDrive",
+                  seat: 4,
+                  price: 800,
+                  totalcost: 1000),
+              HistoryCard(
+                  name: "BMW",
+                  type: "M4 Competition M xDrive",
+                  seat: 4,
+                  price: 800,
+                  totalcost: 1000),
+              HistoryCard(
+                  name: "BMW",
+                  type: "M4 Competition M xDrive",
+                  seat: 4,
+                  price: 800,
+                  totalcost: 1000),
+              HistoryCard(
+                  name: "BMW",
+                  type: "M4 Competition M xDrive",
+                  seat: 4,
+                  price: 800,
+                  totalcost: 1000),
             ],
           ),
         ),
