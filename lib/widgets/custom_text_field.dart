@@ -1,52 +1,53 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
+  final String label;
   final String hintText;
-  final IconData? suffixIcon;
-  final bool obscureText;
-  final TextEditingController? controller;
+  final TextEditingController controller;
+  final bool isPassword;
+  final TextInputType keyboardType;
+  final IconData? prefixIcon;
+  final void Function(String)? onChanged;
 
   const CustomTextField({
     Key? key,
+    required this.label,
     required this.hintText,
-    this.suffixIcon,
-    this.obscureText = false,
-    this.controller,
+    required this.controller,
+    this.isPassword = false,
+    this.keyboardType = TextInputType.text,
+    this.prefixIcon,
+    this.onChanged,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-      height: 48,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        border: Border.all(
-          color: Colors.grey.shade400,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
         ),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextField(
-              obscureText: obscureText,
-              controller: controller,
-              decoration: InputDecoration(
-                hintText: hintText,
-                hintStyle: TextStyle(
-                  color: Colors.grey.shade500,
-                  fontSize: 16,
-                ),
-                border: InputBorder.none,
-                suffixIcon: suffixIcon != null
-                    ? Icon(suffixIcon, color: Colors.grey.shade500)
-                    : null,
-              ),
+        const SizedBox(height: 8),
+        TextField(
+          controller: controller,
+          obscureText: isPassword,
+          keyboardType: keyboardType,
+          onChanged: onChanged,
+          decoration: InputDecoration(
+            hintText: hintText,
+            prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(color: Colors.grey),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
