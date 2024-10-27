@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     HugeIcon(
                       icon: HugeIcons.strokeRoundedLocation04,
-                      color: Color.fromRGBO(167, 167, 167, 1),
+                      color: Colors.black,
                       size: 28,
                     ),
                     SizedBox(width: 12),
