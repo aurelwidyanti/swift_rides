@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swift_rides/views/splash_screen.dart';
 
 import 'utils/entrypoint.dart';
 
@@ -9,6 +10,6 @@ Future<void> main() async {
     theme: ThemeData(
       primarySwatch: Colors.blue,
     ),
-    home: const Entrypoint(),
+    home: const SplashScreen(),
   ));
 }
