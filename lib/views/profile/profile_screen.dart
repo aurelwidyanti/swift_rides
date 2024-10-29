@@ -12,7 +12,7 @@ class ProfileScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: const CustomAppBar(title: "Profile"),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
         child: Column(
           children: [
             const ProfilePic(image: "https://i.postimg.cc/cCsYDjvj/user-2.png"),

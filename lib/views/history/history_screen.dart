@@ -11,7 +11,7 @@ class HistoryScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: CustomAppBar(title: "History"),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
+        padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
         child: SingleChildScrollView(
           child: Column(
             children: [
