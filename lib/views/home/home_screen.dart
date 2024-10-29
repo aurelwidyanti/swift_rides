@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:swift_rides/views/home/car_detail_screen.dart';
+import 'package:swift_rides/views/home/widget/home_banner.dart';
 import 'widget/car_card.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -19,7 +20,7 @@ class HomeScreen extends StatelessWidget {
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
               colors: [
-                Color.fromRGBO(227, 165, 199, 1),
+                Color.fromRGBO(175, 203, 255, 1),
                 Color.fromRGBO(255, 255, 255, 1)
               ],
             ),
@@ -44,20 +45,24 @@ class HomeScreen extends StatelessWidget {
                           Text(
                             'Your Location',
                             style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.normal,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
                               color: Color.fromRGBO(0, 0, 0, 1),
                             ),
                           ),
                           Text(
                             'Semarang, Indonesia',
                             style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.normal),
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
                         ],
                       ),
                     ],
                   ),
+                  const SizedBox(height: 24),
+                  const HomeBanner(),
                   const SizedBox(height: 40),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
