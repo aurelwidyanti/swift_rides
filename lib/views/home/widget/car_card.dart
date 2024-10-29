@@ -35,6 +35,10 @@ class CarCard extends StatelessWidget {
           elevation: 1,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
+            side: const BorderSide(
+              color: Color.fromARGB(255, 220, 220, 220),
+              width: 1,
+            ),
           ),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
@@ -64,7 +68,7 @@ class CarCard extends StatelessWidget {
                           horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
                         color: const Color.fromRGBO(226, 236, 243, 1),
-                        borderRadius: BorderRadius.circular(4),
+                        borderRadius: BorderRadius.circular(8),
                       ),
                       child: const Text(
                         'Available',
