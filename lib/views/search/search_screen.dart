@@ -23,24 +23,21 @@ class SearchScreen extends StatelessWidget {
                   size: 22,
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(40),
                 ),
               ),
               onChanged: (value) {},
             ),
             const SizedBox(height: 24),
             const Text(
-              "Search by brand",
+              "Categories",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 4),
-            const SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SearchFilter(),
-                ],
+            const Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: SearchFilter(),
               ),
             ),
           ],
