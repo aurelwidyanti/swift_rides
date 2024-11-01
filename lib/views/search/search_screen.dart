@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:swift_rides/views/search/widgets/search_filter.dart';
+import 'package:swift_rides/widgets/custom_text_field.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -10,28 +11,19 @@ class SearchScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(16, 64, 16, 0),
+        padding: const EdgeInsets.fromLTRB(16, 72, 16, 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Search...',
-                prefixIcon: const HugeIcon(
-                  icon: HugeIcons.strokeRoundedSearch01,
-                  color: Colors.black,
-                  size: 22,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(40),
-                ),
-              ),
-              onChanged: (value) {},
+            CustomTextField(
+              hintText: 'Where to?',
+              controller: TextEditingController(),
+              prefixIcon: HugeIcons.strokeRoundedSearch01,
             ),
             const SizedBox(height: 24),
             const Text(
               "Categories",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
             ),
             const SizedBox(height: 4),
             const Expanded(
