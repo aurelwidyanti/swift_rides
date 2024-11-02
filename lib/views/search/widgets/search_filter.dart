@@ -51,7 +51,7 @@ class SearchFilter extends StatelessWidget {
                       category['label']!,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        fontSize: 16,
+                        fontSize: 15,
                         fontWeight: FontWeight.w500,
                       ),
                     ),

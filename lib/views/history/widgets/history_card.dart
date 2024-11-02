@@ -66,7 +66,7 @@ class HistoryCard extends StatelessWidget {
                         seat.toStringAsFixed(0),
                         style: const TextStyle(
                           color: Color.fromRGBO(178, 176, 176, 1),
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w500,
                           letterSpacing: 0.14,
                         ),
@@ -89,7 +89,7 @@ class HistoryCard extends StatelessWidget {
                               text: 'IDR ${price.toStringAsFixed(0)}K',
                               style: const TextStyle(
                                 color: Color.fromRGBO(178, 176, 176, 1),
-                                fontSize: 14,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w500,
                                 letterSpacing: 0.14,
                               ),
@@ -98,7 +98,7 @@ class HistoryCard extends StatelessWidget {
                               text: '/day',
                               style: TextStyle(
                                 color: Color.fromRGBO(178, 176, 176, 1),
-                                fontSize: 14,
+                                fontSize: 15,
                                 fontWeight: FontWeight.w500,
                                 letterSpacing: 0.14,
                               ),

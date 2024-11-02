@@ -58,7 +58,7 @@ class CarCard extends StatelessWidget {
                       style: const TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.normal,
-                        fontSize: 14,
+                        fontSize: 15,
                         letterSpacing: 0.5,
                       ),
                     ),
@@ -152,7 +152,7 @@ class CarCard extends StatelessWidget {
                           fuel,
                           style: const TextStyle(
                             color: Color.fromRGBO(178, 176, 176, 1),
-                            fontSize: 14,
+                            fontSize: 15,
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.14,
                           ),
@@ -172,7 +172,7 @@ class CarCard extends StatelessWidget {
                           seat.toStringAsFixed(0),
                           style: const TextStyle(
                             color: Color.fromRGBO(178, 176, 176, 1),
-                            fontSize: 14,
+                            fontSize: 15,
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.14,
                           ),
