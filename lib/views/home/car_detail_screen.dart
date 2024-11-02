@@ -46,7 +46,7 @@ class CarDetailScreen extends StatelessWidget {
           Text(
             value,
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -92,7 +92,7 @@ class CarDetailScreen extends StatelessWidget {
                       Text(
                         name,
                         style: const TextStyle(
-                          fontSize: 14,
+                          fontSize: 15,
                           fontWeight: FontWeight.w500,
                           letterSpacing: 0.14,
                         ),
@@ -197,7 +197,7 @@ class CarDetailScreen extends StatelessWidget {
                   Text(
                     'Description',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 15,
                       letterSpacing: 0.14,
                       fontWeight: FontWeight.w500,
                     ),
@@ -205,7 +205,7 @@ class CarDetailScreen extends StatelessWidget {
                   Text(
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus nibh sed diam pharetra condimentum. Vivamus varius, leo at tincidunt placerat, sapien justo congue turpis, sed.',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 15,
                       fontWeight: FontWeight.normal,
                       color: Color.fromRGBO(167, 167, 167, 1),
                     ),
