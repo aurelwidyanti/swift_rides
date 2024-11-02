@@ -16,7 +16,7 @@ class SearchScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomTextField(
-              hintText: 'Where to?',
+              hintText: 'Search for a ride',
               controller: TextEditingController(),
               prefixIcon: HugeIcons.strokeRoundedSearch01,
             ),
