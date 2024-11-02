@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:swift_rides/utils/constants.dart';
 import 'package:swift_rides/views/home/car_detail_screen.dart';
 import 'package:swift_rides/views/home/widget/home_banner_slide.dart';
-import 'package:swift_rides/widgets/custom_text_field.dart';
+import 'package:swift_rides/views/profile/profile_screen.dart';
 import 'widget/car_card.dart';
-import 'package:hugeicons/hugeicons.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,22 +23,54 @@ class HomeScreen extends StatelessWidget {
             children: [
               Container(
                 alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(left: 16, top: 16),
-                child: const Text(
-                  'Wecome back,',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.normal,
-                  ),
+                padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
+                child: Row(
+                  children: [
+                    const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Welcome back,',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                        Text(
+                          'Aurel',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Spacer(),
+                    Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color: const Color.fromRGBO(23, 93, 227, 1),
+                            width: 6),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ProfileScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 24),
-              CustomTextField(
-                hintText: 'Where to?',
-                controller: TextEditingController(),
-                prefixIcon: HugeIcons.strokeRoundedSearch01,
-              ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 16),
               Container(
                 padding: const EdgeInsets.all(16),
                 child: HomeBannerSlide(images: demoBanner),
@@ -54,9 +85,9 @@ class HomeScreen extends StatelessWidget {
                         const Text(
                           'Recommendation',
                           style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
+                              fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 8),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
@@ -142,9 +173,9 @@ class HomeScreen extends StatelessWidget {
                         const Text(
                           'New Cars',
                           style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
+                              fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 8),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
