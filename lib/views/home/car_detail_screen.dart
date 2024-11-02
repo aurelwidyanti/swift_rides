@@ -71,7 +71,10 @@ class CarDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const CustomAppBar(title: 'Car Detail'),
+      appBar: const CustomAppBar(
+        title: 'Car Detail',
+        textColor: Colors.black,
+      ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
         child: SingleChildScrollView(
