@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:swift_rides/views/history/history_filter_screen.dart';
-import 'package:swift_rides/views/history/widgets/history_filter.dart';
 import 'package:swift_rides/widgets/custom_app_bar.dart';
 import 'package:swift_rides/views/history/widgets/history_card.dart';
 
