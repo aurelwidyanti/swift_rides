@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 class HistoryCard extends StatelessWidget {
@@ -25,10 +26,6 @@ class HistoryCard extends StatelessWidget {
       // onTap: () => onTap(),
       child: Card(
         color: Colors.white,
-        elevation: 1,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(
