@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:swift_rides/utils/constants.dart';
 import 'package:swift_rides/views/home/car_detail_screen.dart';
