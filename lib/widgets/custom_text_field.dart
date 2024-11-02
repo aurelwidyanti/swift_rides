@@ -26,7 +26,7 @@ class CustomTextField extends StatelessWidget {
       width: 360,
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 237, 237, 237),
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(12),
       ),
       child: TextField(
         controller: controller,
