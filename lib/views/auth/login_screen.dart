@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:swift_rides/helpers/sp_helper.dart';
 import 'package:swift_rides/services/api_sevices.dart';
 import 'package:swift_rides/utils/entrypoint.dart';
+import 'package:swift_rides/widgets/custom_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -73,25 +73,39 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.fromLTRB(24, 80, 24, 64),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Welcome back!",
-                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Welcome back!",
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    "Login to your account to continue.",
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black,
+                          fontSize: 15,
+                        ),
+                  ),
+                ],
               ),
+              const Spacer(),
               Form(
                 key: _formKey,
                 child: Column(
                   children: [
                     TextFormField(
-                      validator: (value) => value!.isEmpty
-                          ? "Email address is required"
-                          : null,
+                      validator: (value) =>
+                          value!.isEmpty ? "Email address is required" : null,
                       onSaved: (value) {},
                       textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.emailAddress,
@@ -100,12 +114,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           const InputDecoration(hintText: "Email Address"),
                     ),
                     const SizedBox(height: 20),
-
-                    // Password Field
                     TextFormField(
-                      validator: (value) => value!.isEmpty
-                          ? "Password is required"
-                          : null,
+                      validator: (value) =>
+                          value!.isEmpty ? "Password is required" : null,
                       obscureText: _obscureText,
                       onSaved: (value) {},
                       controller: _passwordController,
@@ -126,48 +137,46 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 20),
-
-                    ElevatedButton(
-                      onPressed: () => _login(context),
-                      child: _isFetching
-                          ? const SizedBox(
-                              height: 20,
-                              width: 20,
-                              child: CircularProgressIndicator(
-                                color: Colors.white,
-                              ),
-                            )
-                          : const Text("Login"),
+                    SizedBox(
+                      width: double.infinity,
+                      child: CustomButton(
+                        text: 'Login',
+                        onPressed: () => _login(context),
+                      ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
+              const Spacer(),
               Center(
-                child: Text.rich(
-                  TextSpan(
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall!
-                        .copyWith(fontWeight: FontWeight.w600),
-                    text: "Don’t have account? ",
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: "Create new account.",
-                        style: const TextStyle(color: Colors.blue),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const Placeholder(),
-                                ),
-                              ),
-                      )
-                    ],
-                  ),
+                child: Column(
+                  children: [
+                    Text(
+                      "Don’t have account?",
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontWeight: FontWeight.normal,
+                          color: Colors.grey,
+                          fontSize: 15),
+                    ),
+                    const SizedBox(height: 4),
+                    GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Placeholder(),
+                        ),
+                      ),
+                      child: const Text(
+                        "Register",
+                        style: TextStyle(
+                            color: Color.fromRGBO(23, 93, 227, 1),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 20),
             ],
           ),
         ),
