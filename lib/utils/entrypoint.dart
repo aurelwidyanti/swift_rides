@@ -35,7 +35,8 @@ class _EntrypointState extends State<Entrypoint> {
   }
 
   Future<void> _refreshData() async {
-    await Provider.of<UserProvider>(context, listen: false).fetchUserData(context);
+    await Provider.of<UserProvider>(context, listen: false)
+        .fetchUserData(context);
     await Provider.of<CarProvider>(context, listen: false).fetchCars();
   }
 
@@ -66,14 +67,30 @@ class _EntrypointState extends State<Entrypoint> {
           items: List.generate(
             _navitems.length,
             (index) => BottomNavigationBarItem(
-              icon: HugeIcon(
-                icon: _navitems[index]["icon"],
-                color: _selectedIndex == index
-                    ? const Color.fromRGBO(23, 93, 227, 1)
-                    : const Color.fromARGB(255, 0, 0, 0),
-                size: 24,
+              icon: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  HugeIcon(
+                    icon: _navitems[index]["icon"],
+                    color: _selectedIndex == index
+                        ? const Color.fromRGBO(23, 93, 227, 1)
+                        : const Color.fromARGB(255, 0, 0, 0),
+                    size: 22,
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    _navitems[index]["title"],
+                    style: TextStyle(
+                      color: _selectedIndex == index
+                          ? const Color.fromRGBO(23, 93, 227, 1)
+                          : const Color.fromARGB(255, 0, 0, 0),
+                      fontSize: 12,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
               ),
-              label: _navitems[index]["title"],
+              label: '',
             ),
           ),
         ),
