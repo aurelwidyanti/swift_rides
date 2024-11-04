@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:provider/provider.dart';
+import 'package:swift_rides/providers/car_provider.dart';
+import 'package:swift_rides/providers/user_provider.dart';
 import 'package:swift_rides/views/history/history_screen.dart';
 import 'package:swift_rides/views/home/home_screen.dart';
 import 'package:swift_rides/views/profile/profile_screen.dart';
@@ -17,11 +20,24 @@ class _EntrypointState extends State<Entrypoint> {
   int _selectedIndex = 0;
 
   final List<Map<String, dynamic>> _navitems = [
-    {"icon": HugeIcons.strokeRoundedHome13},
-    {"icon": HugeIcons.strokeRoundedSearch01},
-    {"icon": HugeIcons.strokeRoundedArrowReloadHorizontal},
-    {"icon": HugeIcons.strokeRoundedUser},
+    {"icon": HugeIcons.strokeRoundedHome13, "title": "Home"},
+    {"icon": HugeIcons.strokeRoundedSearch01, "title": "Search"},
+    {"icon": HugeIcons.strokeRoundedArrowReloadHorizontal, "title": "History"},
+    {"icon": HugeIcons.strokeRoundedUser, "title": "Profile"},
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _refreshData();
+    });
+  }
+
+  Future<void> _refreshData() async {
+    await Provider.of<UserProvider>(context, listen: false).fetchUserData(context);
+    await Provider.of<CarProvider>(context, listen: false).fetchCars();
+  }
 
   final List<Widget> _screens = [
     const HomeScreen(),
@@ -33,7 +49,10 @@ class _EntrypointState extends State<Entrypoint> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_selectedIndex],
+      body: RefreshIndicator(
+        onRefresh: _refreshData,
+        child: _screens[_selectedIndex],
+      ),
       bottomNavigationBar: SizedBox(
         height: 72,
         child: CupertinoTabBar(

@@ -1,27 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:swift_rides/models/car_model.dart';
 
 class CarCard extends StatelessWidget {
-  final String imageUrl;
-  final String name;
-  final String type;
-  final double price;
-  final double rating;
-  final String fuel;
-  final double seat;
+  final Car car;
   final Function onTap;
 
-  const CarCard(
-      {super.key,
-      required this.imageUrl,
-      required this.name,
-      required this.type,
-      required this.price,
-      required this.rating,
-      required this.fuel,
-      required this.seat,
-      required this.onTap});
+  const CarCard({super.key, required this.car, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -47,22 +33,6 @@ class CarCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const Icon(
-                      CupertinoIcons.star_fill,
-                      color: Colors.yellow,
-                      size: 16,
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      ('${rating.toStringAsFixed(1)}/5.0'),
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 15,
-                        letterSpacing: 0.5,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
                     Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 4),
@@ -70,8 +40,12 @@ class CarCard extends StatelessWidget {
                         color: const Color.fromRGBO(226, 236, 243, 1),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Text(
-                        'Available',
+                      child: Text(
+                        car.status == 'available'
+                            ? 'Available'
+                            : car.status == 'rented'
+                                ? 'Rented'
+                                : 'Maintenance',
                         style: TextStyle(
                           color: Color.fromRGBO(23, 93, 227, 1),
                           fontSize: 12,
@@ -82,9 +56,15 @@ class CarCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                Image.asset(
-                  imageUrl,
+                Image.network(
+                  'https://f5f6-114-79-23-217.ngrok-free.app/storage/cars/${car.image!}',
+                  width: 300,
+                  height: 150,
                   fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => const Icon(
+                    Icons.error,
+                    color: Colors.red,
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,14 +73,14 @@ class CarCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          name,
+                          car.brand!,
                           style: const TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.14,
                           ),
                         ),
-                        Text(type,
+                        Text(car.name!,
                             style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w500,
@@ -112,7 +92,7 @@ class CarCard extends StatelessWidget {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: 'IDR ${price.toStringAsFixed(0)}K',
+                            text: 'IDR ${car.price! ~/ 1000}K',
                             style: const TextStyle(
                               color: Color.fromRGBO(23, 93, 227, 1),
                               fontSize: 15,
@@ -149,7 +129,7 @@ class CarCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          fuel,
+                          car.fuel!,
                           style: const TextStyle(
                             color: Color.fromRGBO(178, 176, 176, 1),
                             fontSize: 15,
@@ -169,7 +149,7 @@ class CarCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          seat.toStringAsFixed(0),
+                          car.seat!.toStringAsFixed(0),
                           style: const TextStyle(
                             color: Color.fromRGBO(178, 176, 176, 1),
                             fontSize: 15,

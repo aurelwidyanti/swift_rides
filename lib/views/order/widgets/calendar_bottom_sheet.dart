@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:swift_rides/providers/booking_provider.dart';
 import 'package:swift_rides/views/order/widgets/address_bottom_sheet.dart';
 import 'package:swift_rides/widgets/custom_button.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -17,6 +19,8 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+     final bookingProvider = Provider.of<BookingProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
       child: Column(
@@ -43,7 +47,9 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
               setState(() {
                 if (args.value is PickerDateRange) {
                   startDate = args.value.startDate;
+                  bookingProvider.startDate = args.value.startDate;
                   endDate = args.value.endDate ?? args.value.startDate;
+                  bookingProvider.endDate = args.value.endDate ?? args.value.startDate;
                 }
               });
             },
@@ -64,6 +70,12 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
                           BorderRadius.vertical(top: Radius.circular(16)),
                     ),
                     builder: (context) => const AddressBottomSheet(),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Please select a date range'),
+                    ),
                   );
                 }
               },

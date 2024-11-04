@@ -3,21 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:provider/provider.dart';
+import 'package:swift_rides/models/car_model.dart';
+import 'package:swift_rides/providers/booking_provider.dart';
 import 'package:swift_rides/views/order/widgets/calendar_bottom_sheet.dart';
 import 'package:swift_rides/widgets/custom_app_bar.dart';
 
 class CarDetailScreen extends StatelessWidget {
-  final String name;
-  final String type;
-  final double price;
-  final String imageUrl;
+  final Car car;
 
-  const CarDetailScreen(
-      {super.key,
-      required this.name,
-      required this.type,
-      required this.price,
-      required this.imageUrl});
+  const CarDetailScreen({super.key, required this.car});
 
   Widget _specItem(HugeIcon icon, String label, String value) {
     return Container(
@@ -55,7 +50,11 @@ class CarDetailScreen extends StatelessWidget {
     );
   }
 
-  Future<void> _showBookingBottomSheet(BuildContext context) async {
+  Future<void> _showBookingBottomSheet(
+      BuildContext context, int carId, String car, double price) async {
+    Provider.of<BookingProvider>(context, listen: false).carId = carId;
+    Provider.of<BookingProvider>(context, listen: false).car = car;
+    Provider.of<BookingProvider>(context, listen: false).price = price;
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -80,8 +79,15 @@ class CarDetailScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset(
-                imageUrl,
+              Image.network(
+                'https://f5f6-114-79-23-217.ngrok-free.app/storage/cars/${car.image!}',
+                width: double.infinity,
+                height: 200,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => const Icon(
+                  Icons.error,
+                  color: Colors.red,
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -90,14 +96,14 @@ class CarDetailScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        name,
+                        car.brand!,
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w500,
                           letterSpacing: 0.14,
                         ),
                       ),
-                      Text(type,
+                      Text(car.name!,
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
@@ -109,7 +115,7 @@ class CarDetailScreen extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: 'IDR ${price.toStringAsFixed(0)}K',
+                          text: 'IDR ${car.price! ~/ 1000}K',
                           style: const TextStyle(
                             color: Color.fromRGBO(23, 93, 227, 1),
                             fontSize: 16,
@@ -137,24 +143,26 @@ class CarDetailScreen extends StatelessWidget {
                 children: [
                   Flexible(
                     child: _specItem(
-                        const HugeIcon(
-                          icon: HugeIcons.strokeRoundedDashboardSpeed02,
-                          color: Colors.black,
-                          size: 20,
-                        ),
-                        'Transmission',
-                        'Automatic'),
+                      const HugeIcon(
+                        icon: HugeIcons.strokeRoundedDashboardSpeed02,
+                        color: Colors.black,
+                        size: 20,
+                      ),
+                      'Transmission',
+                      car.transmission!,
+                    ),
                   ),
                   const SizedBox(width: 16),
                   Flexible(
                     child: _specItem(
-                        const HugeIcon(
-                          icon: HugeIcons.strokeRoundedSeatSelector,
-                          color: Colors.black,
-                          size: 20,
-                        ),
-                        'Passengers',
-                        '4 adults'),
+                      const HugeIcon(
+                        icon: HugeIcons.strokeRoundedSeatSelector,
+                        color: Colors.black,
+                        size: 20,
+                      ),
+                      'Seats',
+                      car.seat!.toString(),
+                    ),
                   ),
                 ],
               ),
@@ -164,24 +172,26 @@ class CarDetailScreen extends StatelessWidget {
                 children: [
                   Flexible(
                     child: _specItem(
-                        const HugeIcon(
-                          icon: HugeIcons.strokeRoundedCar01,
-                          color: Colors.black,
-                          size: 20,
-                        ),
-                        'Type',
-                        'Hatchback'),
+                      const HugeIcon(
+                        icon: HugeIcons.strokeRoundedCar01,
+                        color: Colors.black,
+                        size: 20,
+                      ),
+                      'Type',
+                      car.type!,
+                    ),
                   ),
                   const SizedBox(width: 16),
                   Flexible(
                     child: _specItem(
-                        const HugeIcon(
-                          icon: HugeIcons.strokeRoundedFuelStation,
-                          color: Colors.black,
-                          size: 20,
-                        ),
-                        'Fuel',
-                        'Petrol'),
+                      const HugeIcon(
+                        icon: HugeIcons.strokeRoundedFuelStation,
+                        color: Colors.black,
+                        size: 20,
+                      ),
+                      'Fuel',
+                      car.fuel!,
+                    ),
                   ),
                 ],
               ),
@@ -191,10 +201,10 @@ class CarDetailScreen extends StatelessWidget {
                 thickness: 1,
               ),
               const SizedBox(height: 12),
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Description',
                     style: TextStyle(
                       fontSize: 15,
@@ -203,8 +213,8 @@ class CarDetailScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus nibh sed diam pharetra condimentum. Vivamus varius, leo at tincidunt placerat, sapien justo congue turpis, sed.',
-                    style: TextStyle(
+                    car.description!,
+                    style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.normal,
                       color: Color.fromRGBO(167, 167, 167, 1),
@@ -242,7 +252,7 @@ class CarDetailScreen extends StatelessWidget {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: 'IDR ${price.toStringAsFixed(0)}K',
+                      text: 'IDR ${car.price! ~/ 1000}K',
                       style: const TextStyle(
                         color: Color.fromRGBO(23, 93, 227, 1),
                         fontSize: 16,
@@ -264,7 +274,8 @@ class CarDetailScreen extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  _showBookingBottomSheet(context);
+                  _showBookingBottomSheet(
+                      context, car.id!, car.name!, car.price!.toDouble());
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(23, 93, 227, 1),

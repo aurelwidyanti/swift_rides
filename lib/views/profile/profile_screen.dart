@@ -1,13 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:swift_rides/helpers/sp_helper.dart';
+import 'package:swift_rides/providers/user_provider.dart';
+import 'package:swift_rides/services/api_sevices.dart';
+import 'package:swift_rides/views/auth/login_screen.dart';
 import 'package:swift_rides/views/profile/widgets/profile_detail.dart';
 import 'package:swift_rides/views/profile/widgets/profile_pic.dart';
 import 'package:swift_rides/widgets/custom_app_bar.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  final ApiService apiService = ApiService();
+
+  Future<void> _logout() async {
+    final response = await apiService.post('logout', {});
+  print(response.statusCode);
+    if (response.statusCode == 200) {
+      await SharedPreferencesHelper.clearAccessToken();
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
+        ),
+        (_) => true,
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("An error occurred"),
+        ),
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
+
+    if (userProvider.isFetching) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    final user = userProvider.user;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: const CustomAppBar(title: "Profile"),
@@ -15,23 +56,33 @@ class ProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
         child: Column(
           children: [
-            const ProfilePic(image: "https://i.postimg.cc/cCsYDjvj/user-2.png"),
+            ProfilePic(
+                image:
+                    user?.image ?? "https://i.postimg.cc/cCsYDjvj/user-2.png"),
             Text(
-              "Aurel Putri Widyanti",
+              user?.name ?? "Unknown",
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const Divider(),
-            const ProfileDetail(
+            ProfileDetail(
               title: "Username",
-              value: "aurelputri",
+              value: user?.username ?? "Unknown",
             ),
-            const ProfileDetail(
+            ProfileDetail(
               title: "Email",
-              value: "aurelwidyanti@gmail.com",
+              value: user?.email ?? "Unknown",
             ),
-            const ProfileDetail(
+            ProfileDetail(
               title: "Phone Number",
-              value: "+62 812 3456 7890",
+              value: user?.phone ?? "Unknown",
+            ),
+            ProfileDetail(
+              title: "Role",
+              value: user?.role ?? "Unknown",
+            ),
+            ElevatedButton(
+              onPressed: _logout,
+              child: const Text('Logout'),
             ),
           ],
         ),

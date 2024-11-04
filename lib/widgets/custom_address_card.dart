@@ -20,6 +20,7 @@ class CustomAddressCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 100,
+      margin: const EdgeInsets.only(bottom: 8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -55,15 +56,16 @@ class CustomAddressCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    addressStreet,
+                    addressStreet.length > 25 ? '${addressStreet.substring(0, 25)}...' : addressStreet,
                     style: const TextStyle(
+                      fontSize: 12,
                         fontWeight: FontWeight.w400,
                         color: Color.fromRGBO(35, 35, 35, 1)),
                   ),
-                  const SizedBox(height: 4),
                   Text(
                     addressCity,
                     style: const TextStyle(
+                      fontSize: 12,
                         fontWeight: FontWeight.w400,
                         color: Color.fromRGBO(35, 35, 35, 1)),
                   ),
