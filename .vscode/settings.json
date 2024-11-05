@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "D:/CODING/FLUTTER/swift_rides/swift_rides/linux"
+    "cmake.sourceDirectory": "D:/CODING/FLUTTER/swift_rides/swift_rides/linux",
+    "cmake.ignoreCMakeListsMissing": true
 }
