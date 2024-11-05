@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:provider/provider.dart';
+import 'package:swift_rides/providers/booking_provider.dart';
 import 'package:swift_rides/providers/car_provider.dart';
 import 'package:swift_rides/providers/user_provider.dart';
 import 'package:swift_rides/views/history/history_screen.dart';
@@ -38,6 +39,8 @@ class _EntrypointState extends State<Entrypoint> {
     await Provider.of<UserProvider>(context, listen: false)
         .fetchUserData(context);
     await Provider.of<CarProvider>(context, listen: false).fetchCars();
+    await Provider.of<BookingProvider>(context, listen: false)
+        .fetchBookingsByUser();
   }
 
   final List<Widget> _screens = [

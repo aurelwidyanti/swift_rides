@@ -3,8 +3,11 @@ import 'package:http/http.dart' as http;
 import 'package:swift_rides/helpers/sp_helper.dart';
 
 class ApiService {
-  final String baseUrl = 'http://10.0.2.2:8000/api';
-  // final String baseUrl = 'http://127.0.0.1:8000/api/v1';
+  // Local
+  // final String baseUrl = 'http://10.0.2.2:8000/api';
+
+  // Remote
+  final String baseUrl = 'https://d3a6-103-246-107-3.ngrok-free.app/api';
 
   Future<http.Response> get(String endpoint) async {
     final String? token = await SharedPreferencesHelper.getAccessToken();
@@ -26,6 +29,7 @@ class ApiService {
       Uri.parse('$baseUrl/$endpoint'),
       headers: {
         'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true',
         'Authorization': 'Bearer $token',
       },
       body: json.encode(data),
@@ -39,6 +43,7 @@ class ApiService {
       Uri.parse('$baseUrl/$endpoint'),
       headers: {
         'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true',
         'Authorization': 'Bearer $token',
       },
       body: json.encode(data),
@@ -52,6 +57,7 @@ class ApiService {
       Uri.parse('$baseUrl/$endpoint'),
       headers: {
         'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true',
         'Authorization': 'Bearer $token',
       },
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:swift_rides/models/booking_model.dart';
@@ -56,7 +57,7 @@ class SuccessOrderScreen extends StatelessWidget {
                 size: 24.0,
               ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 40),
             const Text(
               'Thanks, your booking has been confirmed.',
               style: TextStyle(
@@ -65,7 +66,7 @@ class SuccessOrderScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 16),
             const Text(
               'You can check the booking details below. Please wait for the admin to contact you for more information.',
               style: TextStyle(
@@ -83,7 +84,7 @@ class SuccessOrderScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Booking Details',
                     style: TextStyle(
                       fontSize: 18,
@@ -91,67 +92,40 @@ class SuccessOrderScreen extends StatelessWidget {
                       color: Colors.black,
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   SummaryItem(
-                    trailing: HugeIcon(
-                      icon: HugeIcons.strokeRoundedMapsLocation01,
-                      color: Colors.black54,
-                      size: 20,
-                    ),
                     title: 'Drop Point',
                     value: booking.address!.street,
                   ),
                   SummaryItem(
-                    trailing: HugeIcon(
-                      icon: HugeIcons.strokeRoundedCar02,
-                      color: Colors.black54,
-                      size: 20,
-                    ),
                     title: 'Car ',
                     value: booking.car!.name,
                   ),
                   SummaryItem(
-                    trailing: HugeIcon(
-                      icon: HugeIcons.strokeRoundedSaleTag02,
-                      color: Colors.black54,
-                      size: 20,
-                    ),
                     title: 'Price (/day)',
                     value: 'IDR ${booking.car!.price! ~/ 1000}K',
                   ),
                   SummaryItem(
-                    trailing: HugeIcon(
-                      icon: HugeIcons.strokeRoundedCalendar03,
-                      color: Colors.black54,
-                      size: 20,
-                    ),
                     title: 'Start Date',
-                    value: '${booking.startDate!.year}-${booking.startDate!.month}-${booking.startDate!.day}',
+                    value:
+                        '${booking.startDate!.year}-${booking.startDate!.month}-${booking.startDate!.day}',
                   ),
                   SummaryItem(
-                    trailing: HugeIcon(
-                      icon: HugeIcons.strokeRoundedCalendar03,
-                      color: Colors.black54,
-                      size: 20,
-                    ),
                     title: 'End Date',
-                    value: '${booking.endDate!.year}-${booking.endDate!.month}-${booking.endDate!.day}',
+                    value:
+                        '${booking.endDate!.year}-${booking.endDate!.month}-${booking.endDate!.day}',
                   ),
                   SummaryItem(
-                    trailing: HugeIcon(
-                      icon: HugeIcons.strokeRoundedTimeQuarterPass,
-                      color: Colors.black54,
-                      size: 20,
-                    ),
                     title: 'Duration',
-                    value: '${booking.endDate!.difference(booking.startDate!).inDays} days',
+                    value:
+                        '${booking.endDate!.difference(booking.startDate!).inDays} days',
                   ),
-                  Divider(height: 16, thickness: 0.5),
+                  const Divider(height: 16, thickness: 0.5),
                   SummaryItem(
                     title: 'Total',
                     value: 'IDR ${booking.totalPrice}',
-                    titleStyle: TextStyle(fontSize: 16),
-                    valueStyle: TextStyle(fontSize: 16),
+                    titleStyle: const TextStyle(fontSize: 16),
+                    valueStyle: const TextStyle(fontSize: 16),
                   ),
                 ],
               ),

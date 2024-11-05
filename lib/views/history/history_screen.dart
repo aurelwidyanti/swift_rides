@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:provider/provider.dart';
+import 'package:swift_rides/models/booking_model.dart';
+import 'package:swift_rides/providers/booking_provider.dart';
 import 'package:swift_rides/views/history/history_filter_screen.dart';
 import 'package:swift_rides/widgets/custom_app_bar.dart';
 import 'package:swift_rides/views/history/widgets/history_card.dart';
@@ -50,54 +53,33 @@ class HistoryScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-        child: Expanded(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.only(top: 8),
-            child: Column(
-              children: [
-                HistoryCard(
-                    name: "BMW",
-                    type: "M4 Competition M xDrive",
-                    seat: 4,
-                    price: 800,
-                    totalcost: 1000),
-                HistoryCard(
-                    name: "BMW",
-                    type: "M4 Competition M xDrive",
-                    seat: 4,
-                    price: 800,
-                    totalcost: 1000),
-                HistoryCard(
-                    name: "BMW",
-                    type: "M4 Competition M xDrive",
-                    seat: 4,
-                    price: 800,
-                    totalcost: 1000),
-                HistoryCard(
-                    name: "BMW",
-                    type: "M4 Competition M xDrive",
-                    seat: 4,
-                    price: 800,
-                    totalcost: 1000),
-                HistoryCard(
-                    name: "BMW",
-                    type: "M4 Competition M xDrive",
-                    seat: 4,
-                    price: 800,
-                    totalcost: 1000),
-                HistoryCard(
-                    name: "BMW",
-                    type: "M4 Competition M xDrive",
-                    seat: 4,
-                    price: 800,
-                    totalcost: 1000),
-              ],
-            ),
-          ),
-        ),
-      ),
+      body:
+          Consumer<BookingProvider>(builder: (context, bookingProvider, child) {
+        final List<Booking> bookings = bookingProvider.bookings;
+
+        if (bookingProvider.isFetching) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        return bookings.isEmpty
+            ? const Center(child: Text('No bookings found'))
+            : Padding(
+                padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                child: ListView.builder(
+                  padding: EdgeInsets.only(top: 8),
+                  itemCount: bookings.length,
+                  itemBuilder: (context, index) {
+                    final booking = bookings[index];
+                    return HistoryCard(
+                      name: booking.car!.name!,
+                      type: booking.car!.type!,
+                      seat: booking.car!.seat!.toDouble(),
+                      price: booking.car!.price!.toDouble(),
+                      totalcost: booking.totalPrice!.toDouble(),
+                    );
+                  },
+                ),
+              );
+      }),
     );
   }
 }

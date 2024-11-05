@@ -57,7 +57,7 @@ class CarCard extends StatelessWidget {
                   ],
                 ),
                 Image.network(
-                  'https://f5f6-114-79-23-217.ngrok-free.app/storage/cars/${car.image!}',
+                  'https://d3a6-103-246-107-3.ngrok-free.app/storage/cars/${car.image!}',
                   width: 300,
                   height: 150,
                   fit: BoxFit.cover,
@@ -68,6 +68,7 @@ class CarCard extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

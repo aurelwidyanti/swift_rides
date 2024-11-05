@@ -9,7 +9,7 @@ class Booking {
   int? addressId;
   DateTime? startDate;
   DateTime? endDate;
-  String? totalPrice;
+  int? totalPrice;
   String? status;
   DateTime? createdAt;
   DateTime? updatedAt;
@@ -38,14 +38,22 @@ class Booking {
       userId: json['user_id'],
       carId: json['car_id'],
       addressId: json['address_id'],
-      startDate: json['start_date'] != null ? DateTime.parse(json['start_date']) : null,
-      endDate: json['end_date'] != null ? DateTime.parse(json['end_date']) : null,
+      startDate: json['start_date'] != null
+          ? DateTime.parse(json['start_date'])
+          : null,
+      endDate:
+          json['end_date'] != null ? DateTime.parse(json['end_date']) : null,
       totalPrice: json['total_price'],
       status: json['status'],
-      createdAt: json['created_at'] != null ? DateTime.parse(json['created_at']) : null,
-      updatedAt: json['updated_at'] != null ? DateTime.parse(json['updated_at']) : null,
+      createdAt: json['created_at'] != null
+          ? DateTime.parse(json['created_at'])
+          : null,
+      updatedAt: json['updated_at'] != null
+          ? DateTime.parse(json['updated_at'])
+          : null,
       user: json['user'] != null ? User.fromJson(json['user']) : null,
-      address: json['address'] != null ? Address.fromJson(json['address']) : null,
+      address:
+          json['address'] != null ? Address.fromJson(json['address']) : null,
       car: json['car'] != null ? Car.fromJson(json['car']) : null,
     );
   }

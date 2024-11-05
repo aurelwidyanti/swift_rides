@@ -98,6 +98,27 @@ class BookingProvider with ChangeNotifier {
     }
   }
 
+  Future<void> fetchBookingsByUser() async {
+    _isFetching = true;
+    notifyListeners();
+    try {
+      final response = await apiService.get('bookingsByUser');
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = json.decode(response.body);
+        final List data = responseData['data'];
+        _bookings = data.map((item) => Booking.fromJson(item)).toList();
+        notifyListeners();
+      }
+    } catch (e) {
+      print('Failed to fetch bookings: $e');
+    } finally {
+      _isFetching = false;
+      notifyListeners();
+    }
+  }
+
   Future<void> addBooking(BuildContext context) async {
     _isFetching = true;
     notifyListeners();

@@ -35,7 +35,7 @@ class AddressProvider with ChangeNotifier {
     _isFetching = true;
     notifyListeners();
     try {
-      final response = await apiService.get('addresses/showByUser');
+      final response = await apiService.get('addressesByUser');
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
       if (response.statusCode == 200) {

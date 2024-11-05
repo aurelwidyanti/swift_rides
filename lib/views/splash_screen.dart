@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:swift_rides/helpers/sp_helper.dart';
 import 'package:swift_rides/utils/entrypoint.dart';
+import 'package:swift_rides/views/auth/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,9 +13,19 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  String? accessToken;
+
+  Future<void> _getAccessToken() async {
+    String? token = await SharedPreferencesHelper.getAccessToken();
+    setState(() {
+      accessToken = token;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
+    _getAccessToken();
     Future.delayed(
       const Duration(seconds: 3),
       () {
@@ -21,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
           context,
           PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                const Entrypoint(),
+                accessToken == null ? const LoginScreen() : const Entrypoint(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               return FadeTransition(

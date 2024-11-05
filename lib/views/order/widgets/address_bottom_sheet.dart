@@ -22,16 +22,16 @@ class _AddressBottomSheetState extends State<AddressBottomSheet> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<AddressProvider>(context, listen: false).fetchAddresses();
+      Provider.of<AddressProvider>(context, listen: false)
+          .fetchAddressesByUser();
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<AddressProvider>(
-      builder: (context, addressProvider, child) {
+        builder: (context, addressProvider, child) {
       final List<Address> addresses = addressProvider.addresses;
-
 
       if (addressProvider.isFetching) {
         return const Center(child: CircularProgressIndicator());
@@ -68,31 +68,31 @@ class _AddressBottomSheetState extends State<AddressBottomSheet> {
                     ],
                   ),
                   const SizedBox(height: 16),
-                    SizedBox(
+                  SizedBox(
                     height: 300, // Adjust height as needed
                     child: ListView.builder(
                       itemCount: addresses.length,
                       itemBuilder: (context, index) {
-                      final address = addresses[index];
-                      return CustomAddressCard(
-                        title: address.title!,
-                        addressStreet: address.street!,
-                        addressCity: address.city!,
-                        isSelected: selectedAddress == address.title,
-                        onSelect: () {
-                        setState(() {
-                          selectedAddress = address.title!;
-                        });
-                        Provider.of<BookingProvider>(context, listen: false)
-                            .addressId = address.id!;
+                        final address = addresses[index];
+                        return CustomAddressCard(
+                          title: address.title!,
+                          addressStreet: address.street!,
+                          addressCity: address.city!,
+                          isSelected: selectedAddress == address.title,
+                          onSelect: () {
+                            setState(() {
+                              selectedAddress = address.title!;
+                            });
+                            Provider.of<BookingProvider>(context, listen: false)
+                                .addressId = address.id!;
 
-                        Provider.of<BookingProvider>(context, listen: false)
-                            .address = address.title!;
-                        },
-                      );
+                            Provider.of<BookingProvider>(context, listen: false)
+                                .address = address.title!;
+                          },
+                        );
                       },
                     ),
-                    ),
+                  ),
                   const SizedBox(height: 24),
                   SizedBox(
                     width: double.infinity,

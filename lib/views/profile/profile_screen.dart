@@ -7,6 +7,7 @@ import 'package:swift_rides/views/auth/login_screen.dart';
 import 'package:swift_rides/views/profile/widgets/profile_detail.dart';
 import 'package:swift_rides/views/profile/widgets/profile_pic.dart';
 import 'package:swift_rides/widgets/custom_app_bar.dart';
+import 'package:swift_rides/widgets/custom_button.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -20,7 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> _logout() async {
     final response = await apiService.post('logout', {});
-  print(response.statusCode);
+    print(response.statusCode);
     if (response.statusCode == 200) {
       await SharedPreferencesHelper.clearAccessToken();
       Navigator.pushAndRemoveUntil(
@@ -51,14 +52,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const CustomAppBar(title: "Profile"),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+      appBar: const CustomAppBar(
+        title: "Profile",
+        showBackButton: false,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            ProfilePic(
-                image:
-                    user?.image ?? "https://i.postimg.cc/cCsYDjvj/user-2.png"),
+            CircleAvatar(
+              radius: 50,
+              backgroundColor: Colors.grey.shade200,
+              child: Icon(
+                Icons.person,
+                size: 50,
+                color: Colors.grey.shade800,
+              ),
+            ),
+            const SizedBox(height: 16),
             Text(
               user?.name ?? "Unknown",
               style: Theme.of(context).textTheme.titleLarge,
@@ -80,9 +91,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               title: "Role",
               value: user?.role ?? "Unknown",
             ),
-            ElevatedButton(
-              onPressed: _logout,
-              child: const Text('Logout'),
+            const Spacer(),
+            SizedBox(
+              width: double.infinity,
+              child: CustomButton(
+                text: 'Logout',
+                onPressed: _logout,
+              ),
             ),
           ],
         ),

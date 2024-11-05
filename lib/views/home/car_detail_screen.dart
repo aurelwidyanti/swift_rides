@@ -73,6 +73,7 @@ class CarDetailScreen extends StatelessWidget {
       appBar: const CustomAppBar(
         title: 'Car Detail',
         textColor: Colors.black,
+        backgroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
@@ -80,7 +81,7 @@ class CarDetailScreen extends StatelessWidget {
           child: Column(
             children: [
               Image.network(
-                'https://f5f6-114-79-23-217.ngrok-free.app/storage/cars/${car.image!}',
+                'https://d3a6-103-246-107-3.ngrok-free.app/storage/cars/${car.image!}',
                 width: double.infinity,
                 height: 200,
                 fit: BoxFit.cover,
