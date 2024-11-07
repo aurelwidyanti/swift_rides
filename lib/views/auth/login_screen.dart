@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:swift_rides/helpers/sp_helper.dart';
 import 'package:swift_rides/services/api_sevices.dart';
 import 'package:swift_rides/utils/entrypoint.dart';
+import 'package:swift_rides/views/auth/widgets/auth_text_field.dart';
 import 'package:swift_rides/widgets/custom_button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -72,116 +73,103 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(24, 24, 24, 64),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(24, 64, 24, 40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ClipOval(
+                  child: Image.asset(
+                    'assets/icon/icon2.png',
+                    width: 56,
+                    height: 56,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 48),
+            Text(
+              "Log in",
+              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 32,
+                    color: const Color.fromRGBO(23, 93, 227, 1),
+                  ),
+            ),
+            const SizedBox(height: 40),
+            Form(
+              key: _formKey,
+              child: Column(
                 children: [
-                  ClipOval(
-                    child: Image.asset(
-                      'assets/icon/icon2.png',
-                      width: 64,
-                      height: 64,
-                      fit: BoxFit.cover,
+                  AuthTextField(
+                    controller: _emailController,
+                    hintText: "Email Address",
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) =>
+                        value!.isEmpty ? "Email address is required" : null,
+                  ),
+                  const SizedBox(height: 16),
+                  AuthTextField(
+                    controller: _passwordController,
+                    hintText: "Password",
+                    obscureText: _obscureText,
+                    validator: (value) =>
+                        value!.isEmpty ? "Password is required" : null,
+                    onSuffixIconTap: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 44,
+                    child: CustomButton(
+                      text: 'Login',
+                      onPressed: () => _login(context),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 48),
-              Text(
-                "Log in",
-                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 32,
-                      color: const Color.fromRGBO(23, 93, 227, 1),
+            ),
+            const Spacer(),
+            Center(
+              child: Column(
+                children: [
+                  Text(
+                    "Don’t have account?",
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        fontWeight: FontWeight.normal,
+                        color: Colors.grey,
+                        fontSize: 15),
+                  ),
+                  const SizedBox(height: 4),
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Placeholder(),
+                      ),
                     ),
+                    child: const Text(
+                      "Register",
+                      style: TextStyle(
+                          color: Color.fromRGBO(23, 93, 227, 1),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 40),
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      validator: (value) =>
-                          value!.isEmpty ? "Email address is required" : null,
-                      onSaved: (value) {},
-                      textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.emailAddress,
-                      controller: _emailController,
-                      decoration:
-                          const InputDecoration(hintText: "Email Address"),
-                    ),
-                    const SizedBox(height: 20),
-                    TextFormField(
-                      validator: (value) =>
-                          value!.isEmpty ? "Password is required" : null,
-                      obscureText: _obscureText,
-                      onSaved: (value) {},
-                      controller: _passwordController,
-                      decoration: InputDecoration(
-                        hintText: "Password",
-                        suffixIcon: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _obscureText = !_obscureText;
-                            });
-                          },
-                          child: _obscureText
-                              ? const Icon(Icons.visibility_off,
-                                  color: Colors.grey)
-                              : const Icon(Icons.visibility,
-                                  color: Colors.grey),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      width: double.infinity,
-                      child: CustomButton(
-                        text: 'Login',
-                        onPressed: () => _login(context),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const Spacer(),
-              Center(
-                child: Column(
-                  children: [
-                    Text(
-                      "Don’t have account?",
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          fontWeight: FontWeight.normal,
-                          color: Colors.grey,
-                          fontSize: 15),
-                    ),
-                    const SizedBox(height: 4),
-                    GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Placeholder(),
-                        ),
-                      ),
-                      child: const Text(
-                        "Register",
-                        style: TextStyle(
-                            color: Color.fromRGBO(23, 93, 227, 1),
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
