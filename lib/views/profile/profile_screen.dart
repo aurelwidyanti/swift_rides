@@ -5,7 +5,6 @@ import 'package:swift_rides/providers/user_provider.dart';
 import 'package:swift_rides/services/api_sevices.dart';
 import 'package:swift_rides/views/auth/login_screen.dart';
 import 'package:swift_rides/views/profile/widgets/profile_detail.dart';
-import 'package:swift_rides/views/profile/widgets/profile_pic.dart';
 import 'package:swift_rides/widgets/custom_app_bar.dart';
 import 'package:swift_rides/widgets/custom_button.dart';
 
