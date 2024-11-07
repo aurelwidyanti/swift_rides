@@ -39,8 +39,11 @@ class _EntrypointState extends State<Entrypoint> {
     await Provider.of<UserProvider>(context, listen: false)
         .fetchUserData(context);
     await Provider.of<CarProvider>(context, listen: false).fetchCars();
-    await Provider.of<BookingProvider>(context, listen: false)
-        .fetchBookingsByUser();
+
+    if (mounted) {
+      await Provider.of<BookingProvider>(context, listen: false)
+          .fetchBookingsByUser();
+    }
   }
 
   final List<Widget> _screens = [
