@@ -71,34 +71,37 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(24, 80, 24, 64),
+          padding: const EdgeInsets.fromLTRB(24, 24, 24, 64),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    "Welcome back!",
-                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                          fontWeight: FontWeight.w600,
-                        ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "Login to your account to continue.",
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black,
-                          fontSize: 15,
-                        ),
+                  ClipOval(
+                    child: Image.asset(
+                      'assets/icon/icon2.png',
+                      width: 64,
+                      height: 64,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ],
               ),
-              const Spacer(),
+              const SizedBox(height: 48),
+              Text(
+                "Log in",
+                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 32,
+                      color: const Color.fromRGBO(23, 93, 227, 1),
+                    ),
+              ),
+              const SizedBox(height: 40),
               Form(
                 key: _formKey,
                 child: Column(
