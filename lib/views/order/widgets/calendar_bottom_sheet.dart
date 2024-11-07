@@ -19,7 +19,7 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-     final bookingProvider = Provider.of<BookingProvider>(context);
+    final bookingProvider = Provider.of<BookingProvider>(context);
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
@@ -49,13 +49,15 @@ class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
                   startDate = args.value.startDate;
                   bookingProvider.startDate = args.value.startDate;
                   endDate = args.value.endDate ?? args.value.startDate;
-                  bookingProvider.endDate = args.value.endDate ?? args.value.startDate;
+                  bookingProvider.endDate =
+                      args.value.endDate ?? args.value.startDate;
                 }
               });
             },
           ),
           SizedBox(
             width: double.infinity,
+            height: 44,
             child: CustomButton(
               onPressed: () {
                 if (startDate != null && endDate != null) {

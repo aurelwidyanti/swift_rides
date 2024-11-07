@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:swift_rides/providers/user_provider.dart';
 import 'package:swift_rides/utils/constants.dart';
-import 'package:swift_rides/views/home/widget/car_slider.dart';
-import 'package:swift_rides/views/home/widget/home_banner_slide.dart';
+import 'package:swift_rides/views/home/widgets/car_slider.dart';
+import 'package:swift_rides/views/home/widgets/home_banner_slide.dart';
 import 'package:swift_rides/views/profile/profile_screen.dart';
 
 class HomeScreen extends StatelessWidget {

@@ -97,6 +97,7 @@ class _HistoryFilterScreenState extends State<HistoryFilterScreen> {
             const Spacer(),
             SizedBox(
               width: double.infinity,
+              height: 44,
               child: CustomButton(
                 onPressed: () {},
                 text: 'Apply Filter',

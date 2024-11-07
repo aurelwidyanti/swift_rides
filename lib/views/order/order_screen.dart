@@ -25,15 +25,28 @@ class OrderScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const SizedBox(height: 24),
-                      SummaryItem(title: 'Name', value: userProvider.user?.name),
-                      SummaryItem(title: 'Phone Number', value: userProvider.user!.phone),
-                      SummaryItem(title: 'Drop Point', value: bookingProvider.address),
+                      SummaryItem(
+                          title: 'Name', value: userProvider.user?.name),
+                      SummaryItem(
+                          title: 'Phone Number',
+                          value: userProvider.user!.phone),
+                      SummaryItem(
+                          title: 'Drop Point', value: bookingProvider.address),
                       const Divider(height: 16, thickness: 0.5),
                       SummaryItem(title: 'Car', value: bookingProvider.car),
-                      SummaryItem(title: 'Price (/day)', value: 'IDR ${bookingProvider.price ~/ 1000}K'),
-                      SummaryItem(title: 'Start Date', value: bookingProvider.startDate.toString()),
-                      SummaryItem(title: 'End Date', value: bookingProvider.endDate.toString()),
-                      SummaryItem(title: 'Duration', value: '${bookingProvider.endDate.difference(bookingProvider.startDate).inDays} days'),
+                      SummaryItem(
+                          title: 'Price (/day)',
+                          value: 'IDR ${bookingProvider.price ~/ 1000}K'),
+                      SummaryItem(
+                          title: 'Start Date',
+                          value: bookingProvider.startDate.toString()),
+                      SummaryItem(
+                          title: 'End Date',
+                          value: bookingProvider.endDate.toString()),
+                      SummaryItem(
+                          title: 'Duration',
+                          value:
+                              '${bookingProvider.endDate.difference(bookingProvider.startDate).inDays} days'),
                       const Spacer(),
                       const Divider(),
                       const SizedBox(height: 16),
@@ -52,6 +65,7 @@ class OrderScreen extends StatelessWidget {
                       const SizedBox(height: 16),
                       SizedBox(
                         width: double.infinity,
+                        height: 44,
                         child: CustomButton(
                           onPressed: () async {
                             await bookingProvider.addBooking(context);

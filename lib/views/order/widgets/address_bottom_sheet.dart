@@ -96,6 +96,7 @@ class _AddressBottomSheetState extends State<AddressBottomSheet> {
                   const SizedBox(height: 24),
                   SizedBox(
                     width: double.infinity,
+                    height: 44,
                     child: CustomButton(
                       onPressed: () {
                         Navigator.push(
