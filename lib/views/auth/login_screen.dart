@@ -107,17 +107,19 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   AuthTextField(
+                    labelText: "Email",
                     controller: _emailController,
-                    hintText: "Email Address",
+                    hintText: "example@mail.com",
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) =>
                         value!.isEmpty ? "Email address is required" : null,
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 20),
                   AuthTextField(
+                    labelText: "Password",
                     controller: _passwordController,
-                    hintText: "Password",
+                    hintText: "must be 8 password",
                     obscureText: _obscureText,
                     validator: (value) =>
                         value!.isEmpty ? "Password is required" : null,
@@ -141,16 +143,17 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const Spacer(),
             Center(
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Don’t have account?",
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        fontWeight: FontWeight.normal,
-                        color: Colors.grey,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black45,
                         fontSize: 15),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(width: 4),
                   GestureDetector(
                     onTap: () => Navigator.push(
                       context,
@@ -161,9 +164,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: const Text(
                       "Register",
                       style: TextStyle(
-                          color: Color.fromRGBO(23, 93, 227, 1),
+                          color: Colors.black,
                           fontSize: 15,
-                          fontWeight: FontWeight.w500),
+                          fontWeight: FontWeight.w800),
                     ),
                   ),
                 ],
