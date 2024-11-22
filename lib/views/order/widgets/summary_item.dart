@@ -29,7 +29,7 @@ class SummaryItem extends StatelessWidget {
             title ?? '',
             style: titleStyle ??
                 const TextStyle(
-                  fontSize: 16,
+                  fontSize: 15,
                   color: Colors.black54,
                 ),
           ),
@@ -39,7 +39,7 @@ class SummaryItem extends StatelessWidget {
                 value ?? '',
                 style: valueStyle ??
                     const TextStyle(
-                      fontSize: 16,
+                      fontSize: 15,
                       fontWeight: FontWeight.w500,
                     ),
               ),
