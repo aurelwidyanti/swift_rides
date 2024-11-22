@@ -138,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   children: [
                     AuthTextField(
-                      labelText: "Email Address",
+                      labelText: "Email",
                       controller: _emailController,
                       hintText: "example@mail.com",
                       textInputAction: TextInputAction.next,
