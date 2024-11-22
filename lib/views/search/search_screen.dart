@@ -10,18 +10,22 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
+        title: CustomTextField(
+          hintText: 'Search for a ride',
+          controller: TextEditingController(),
+          prefixIcon: HugeIcons.strokeRoundedSearch01,
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomTextField(
-                hintText: 'Search for a ride',
-                controller: TextEditingController(),
-                prefixIcon: HugeIcons.strokeRoundedSearch01,
-              ),
-              const SizedBox(height: 24),
               const Text(
                 "Categories",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
