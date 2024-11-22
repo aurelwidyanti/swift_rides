@@ -19,7 +19,7 @@ class CarDetailScreen extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,12 +76,12 @@ class CarDetailScreen extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+        padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
         child: SingleChildScrollView(
           child: Column(
             children: [
               Image.network(
-                'https://d3a6-103-246-107-3.ngrok-free.app/storage/cars/${car.image!}',
+                'https://7f1f-149-113-94-119.ngrok-free.app/storage/cars/${car.image!}',
                 width: double.infinity,
                 height: 200,
                 fit: BoxFit.cover,
@@ -224,10 +224,6 @@ class CarDetailScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 12),
-              Divider(
-                color: Colors.grey[300],
-                thickness: 1,
-              ),
             ],
           ),
         ),
