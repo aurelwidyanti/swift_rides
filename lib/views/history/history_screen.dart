@@ -53,33 +53,35 @@ class HistoryScreen extends StatelessWidget {
           ),
         ],
       ),
-      body:
-          Consumer<BookingProvider>(builder: (context, bookingProvider, child) {
-        final List<Booking> bookings = bookingProvider.bookings;
+      body: SafeArea(
+        child: Consumer<BookingProvider>(
+            builder: (context, bookingProvider, child) {
+          final List<Booking> bookings = bookingProvider.bookings;
 
-        if (bookingProvider.isFetching) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        return bookings.isEmpty
-            ? const Center(child: Text('No bookings found'))
-            : Padding(
-                padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-                child: ListView.builder(
-                  padding: EdgeInsets.only(top: 8),
-                  itemCount: bookings.length,
-                  itemBuilder: (context, index) {
-                    final booking = bookings[index];
-                    return HistoryCard(
-                      name: booking.car!.name!,
-                      type: booking.car!.type!,
-                      seat: booking.car!.seat!.toDouble(),
-                      price: booking.car!.price!.toDouble(),
-                      totalcost: booking.totalPrice!.toDouble(),
-                    );
-                  },
-                ),
-              );
-      }),
+          if (bookingProvider.isFetching) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          return bookings.isEmpty
+              ? const Center(child: Text('No bookings found'))
+              : Padding(
+                  padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                  child: ListView.builder(
+                    padding: EdgeInsets.only(top: 8),
+                    itemCount: bookings.length,
+                    itemBuilder: (context, index) {
+                      final booking = bookings[index];
+                      return HistoryCard(
+                        name: booking.car!.name!,
+                        type: booking.car!.type!,
+                        seat: booking.car!.seat!.toDouble(),
+                        price: booking.car!.price!.toDouble(),
+                        totalcost: booking.totalPrice!.toDouble(),
+                      );
+                    },
+                  ),
+                );
+        }),
+      ),
     );
   }
 }
