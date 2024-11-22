@@ -19,8 +19,38 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
+  final FocusNode _emailFocusNode = FocusNode();
+  final FocusNode _passwordFocusNode = FocusNode();
   bool _obscureText = true;
   bool _isFetching = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailFocusNode.addListener(_scrollToFocusedField);
+    _passwordFocusNode.addListener(_scrollToFocusedField);
+  }
+
+  void _scrollToFocusedField() {
+    if (_scrollController.hasClients) {
+      if (_emailFocusNode.hasFocus || _passwordFocusNode.hasFocus) {
+        _scrollController.animateTo(
+          _scrollController.position.maxScrollExtent,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        );
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _emailFocusNode.dispose();
+    _passwordFocusNode.dispose();
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   Future<void> _login(BuildContext context) async {
     setState(() {
@@ -76,14 +106,22 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(24, 24, 24, 40),
+          padding: const EdgeInsets.fromLTRB(24, 40, 24, 40),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  Text(
+                    "Log in",
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 32,
+                          color: const Color.fromRGBO(23, 93, 227, 1),
+                        ),
+                  ),
                   ClipOval(
                     child: Image.asset(
                       'assets/icon/icon2.png',
@@ -93,15 +131,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ],
-              ),
-              const SizedBox(height: 40),
-              Text(
-                "Log in",
-                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 32,
-                      color: const Color.fromRGBO(23, 93, 227, 1),
-                    ),
               ),
               const SizedBox(height: 40),
               Form(
@@ -116,6 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       keyboardType: TextInputType.emailAddress,
                       validator: (value) =>
                           value!.isEmpty ? "Email address is required" : null,
+                      focusNode: _emailFocusNode,
                     ),
                     const SizedBox(height: 20),
                     AuthTextField(
@@ -125,10 +155,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: _obscureText,
                       validator: (value) =>
                           value!.isEmpty ? "Password is required" : null,
+                      focusNode: FocusNode(),
                       onSuffixIconTap: () {
-                        setState(() {
-                          _obscureText = !_obscureText;
-                        });
+                        setState(
+                          () {
+                            _obscureText = !_obscureText;
+                          },
+                        );
                       },
                     ),
                     const SizedBox(height: 24),
