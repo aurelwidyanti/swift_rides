@@ -29,7 +29,7 @@ class OrderScreen extends StatelessWidget {
                           title: 'Name', value: userProvider.user?.name),
                       SummaryItem(
                           title: 'Phone Number',
-                          value: userProvider.user!.phone),
+                          value: userProvider.user?.phone),
                       SummaryItem(
                           title: 'Drop Point', value: bookingProvider.address),
                       const Divider(height: 16, thickness: 0.5),
