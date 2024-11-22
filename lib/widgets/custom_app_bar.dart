@@ -5,6 +5,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool centerTitle;
   final bool showBackButton;
   final Color backgroundColor;
+  final Color surfaceColor;
   final Color textColor;
   final List<Widget>? actions;
 
@@ -14,6 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.centerTitle = true,
     this.showBackButton = true,
     this.backgroundColor = Colors.white,
+    this.surfaceColor = Colors.white,
     this.textColor = Colors.black,
     this.actions,
   });
@@ -22,6 +24,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: backgroundColor,
+      surfaceTintColor: surfaceColor,
       centerTitle: centerTitle,
       title: Text(
         title,
