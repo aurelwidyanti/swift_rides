@@ -84,30 +84,30 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Container(
                   padding: const EdgeInsets.fromLTRB(16, 24, 0, 24),
-                  child: Column(
+                  child: const Column(
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             'Recommendation',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
-                          const SizedBox(height: 8),
+                          SizedBox(height: 8),
                           CarSlider(),
                         ],
                       ),
-                      const SizedBox(height: 24),
+                      SizedBox(height: 24),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                          Text(
                             'New Cars',
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
-                          const SizedBox(height: 8),
+                          SizedBox(height: 8),
                           CarSlider(),
                         ],
                       ),
