@@ -29,8 +29,9 @@ class ProfileDetail extends StatelessWidget {
             title ?? '',
             style: titleStyle ??
                 const TextStyle(
-                  fontSize: 16,
-                  color: Colors.black54,
+                  fontSize: 14,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
                 ),
           ),
           Row(
@@ -39,8 +40,9 @@ class ProfileDetail extends StatelessWidget {
                 value ?? '',
                 style: valueStyle ??
                     const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black,
                     ),
               ),
               if (trailing != null) trailing!,
