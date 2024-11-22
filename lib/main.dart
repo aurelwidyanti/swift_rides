@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:swift_rides/providers/address_provider.dart';
 import 'package:swift_rides/providers/booking_provider.dart';
@@ -7,7 +8,8 @@ import 'package:swift_rides/providers/user_provider.dart';
 import 'package:swift_rides/views/splash_screen.dart';
 
 Future<void> main() async {
-  runApp(MainApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MainApp());
 }
 
 class MainApp extends StatefulWidget {
@@ -31,7 +33,8 @@ class _MainAppState extends State<MainApp> {
         title: 'Swift Rides',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          fontFamily: GoogleFonts.lato().fontFamily,
         ),
         home: const SplashScreen(),
       ),
