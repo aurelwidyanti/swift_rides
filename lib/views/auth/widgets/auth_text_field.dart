@@ -9,6 +9,7 @@ class AuthTextField extends StatelessWidget {
   final TextInputAction textInputAction;
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
+  final FocusNode? focusNode;
   final VoidCallback? onSuffixIconTap;
 
   const AuthTextField({
@@ -20,6 +21,7 @@ class AuthTextField extends StatelessWidget {
     this.textInputAction = TextInputAction.done,
     this.keyboardType = TextInputType.text,
     this.validator,
+    this.focusNode,
     this.onSuffixIconTap,
   }) : super(key: key);
 
@@ -38,7 +40,7 @@ class AuthTextField extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           height: 44,
           width: 360,
           decoration: BoxDecoration(
@@ -51,6 +53,9 @@ class AuthTextField extends StatelessWidget {
             textInputAction: textInputAction,
             keyboardType: keyboardType,
             validator: validator,
+            focusNode: focusNode,
+            scrollPadding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom + 200),
             decoration: InputDecoration(
                 hintText: hintText,
                 hintStyle: const TextStyle(
