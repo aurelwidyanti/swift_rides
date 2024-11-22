@@ -124,8 +124,16 @@ class SuccessOrderScreen extends StatelessWidget {
                   SummaryItem(
                     title: 'Total',
                     value: 'IDR ${booking.totalPrice}',
-                    titleStyle: const TextStyle(fontSize: 16),
-                    valueStyle: const TextStyle(fontSize: 16),
+                    titleStyle: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                    ),
+                    valueStyle: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                    ),
                   ),
                 ],
               ),
