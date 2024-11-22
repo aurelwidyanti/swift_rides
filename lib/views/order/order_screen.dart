@@ -48,18 +48,20 @@ class OrderScreen extends StatelessWidget {
                           value:
                               '${bookingProvider.endDate.difference(bookingProvider.startDate).inDays} days'),
                       const Spacer(),
-                      const Divider(),
-                      const SizedBox(height: 16),
+                      const Divider(thickness: 0.5),
+                      const SizedBox(height: 8),
                       SummaryItem(
                         title: 'Grand Total',
                         value: 'IDR ${totalPrice}',
                         titleStyle: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
+                          color: Colors.green,
                         ),
                         valueStyle: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
+                          color: Colors.green,
                         ),
                       ),
                       const SizedBox(height: 16),
