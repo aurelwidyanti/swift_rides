@@ -40,11 +40,13 @@ class _AddressBottomSheetState extends State<AddressBottomSheet> {
       return addresses.isEmpty
           ? const Center(child: Text('No addresses found'))
           : Padding(
-              padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
+              padding: const EdgeInsets.only(top: 8, bottom: 16),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       IconButton(
                         icon: const Icon(Icons.arrow_back),
@@ -67,46 +69,54 @@ class _AddressBottomSheetState extends State<AddressBottomSheet> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16),
-                  SizedBox(
-                    height: 300, // Adjust height as needed
-                    child: ListView.builder(
-                      itemCount: addresses.length,
-                      itemBuilder: (context, index) {
-                        final address = addresses[index];
-                        return CustomAddressCard(
-                          title: address.title!,
-                          addressStreet: address.street!,
-                          addressCity: address.city!,
-                          isSelected: selectedAddress == address.title,
-                          onSelect: () {
-                            setState(() {
-                              selectedAddress = address.title!;
-                            });
-                            Provider.of<BookingProvider>(context, listen: false)
-                                .addressId = address.id!;
+                  const SizedBox(height: 8),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: SizedBox(
+                      height: 300,
+                      child: ListView.builder(
+                        itemCount: addresses.length,
+                        itemBuilder: (context, index) {
+                          final address = addresses[index];
+                          return CustomAddressCard(
+                            title: address.title!,
+                            addressStreet: address.street!,
+                            addressCity: address.city!,
+                            isSelected: selectedAddress == address.title,
+                            onSelect: () {
+                              setState(() {
+                                selectedAddress = address.title!;
+                              });
+                              Provider.of<BookingProvider>(context,
+                                      listen: false)
+                                  .addressId = address.id!;
 
-                            Provider.of<BookingProvider>(context, listen: false)
-                                .address = address.title!;
-                          },
-                        );
-                      },
+                              Provider.of<BookingProvider>(context,
+                                      listen: false)
+                                  .address = address.title!;
+                            },
+                          );
+                        },
+                      ),
                     ),
                   ),
                   const SizedBox(height: 24),
-                  SizedBox(
-                    width: double.infinity,
-                    height: 44,
-                    child: CustomButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => OrderScreen(),
-                          ),
-                        );
-                      },
-                      text: 'Confirm',
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: SizedBox(
+                      width: 360,
+                      height: 44,
+                      child: CustomButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OrderScreen(),
+                            ),
+                          );
+                        },
+                        text: 'Confirm',
+                      ),
                     ),
                   ),
                 ],
