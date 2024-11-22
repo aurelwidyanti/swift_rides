@@ -31,25 +31,13 @@ class HistoryCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Text(
-                    name,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.14,
-                    ),
-                  ),
-                  Text(
-                    type,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 0.14,
-                    ),
-                  ),
-                ],
+              Text(
+                name,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 0.14,
+                ),
               ),
               const SizedBox(height: 12),
               Row(
