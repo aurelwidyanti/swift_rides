@@ -55,50 +55,76 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: "Profile",
         showBackButton: false,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundColor: Colors.grey.shade200,
-              child: Icon(
-                Icons.person,
-                size: 50,
-                color: Colors.grey.shade800,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            children: [
+              Card(
+                semanticContainer: true,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                elevation: 2,
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 50,
+                        backgroundColor: Colors.grey.shade200,
+                        child: Icon(
+                          Icons.person,
+                          size: 50,
+                          color: Colors.grey.shade800,
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      Text(
+                        user?.name ?? "Unknown",
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      const Divider(
+                        height: 40,
+                      ),
+                      ProfileDetail(
+                        title: "Username",
+                        value: user?.username ?? "Unknown",
+                      ),
+                      ProfileDetail(
+                        title: "Email",
+                        value: user?.email ?? "Unknown",
+                      ),
+                      ProfileDetail(
+                        title: "Phone Number",
+                        value: user?.phone ?? "Unknown",
+                      ),
+                      const ProfileDetail(
+                        title: "Date of Birth",
+                        value: "-",
+                      ),
+                      const ProfileDetail(
+                        title: "Gender",
+                        value: "-",
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              user?.name ?? "Unknown",
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const Divider(),
-            ProfileDetail(
-              title: "Username",
-              value: user?.username ?? "Unknown",
-            ),
-            ProfileDetail(
-              title: "Email",
-              value: user?.email ?? "Unknown",
-            ),
-            ProfileDetail(
-              title: "Phone Number",
-              value: user?.phone ?? "Unknown",
-            ),
-            ProfileDetail(
-              title: "Role",
-              value: user?.role ?? "Unknown",
-            ),
-            const Spacer(),
-            SizedBox(
-              width: double.infinity,
-              child: CustomButton(
-                text: 'Logout',
-                onPressed: _logout,
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                height: 44,
+                child: CustomButton(
+                  text: 'Logout',
+                  onPressed: () => _logout(),
+                  backgroundColor: Colors.red,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
