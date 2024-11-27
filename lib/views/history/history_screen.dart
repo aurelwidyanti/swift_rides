@@ -64,7 +64,7 @@ class HistoryScreen extends StatelessWidget {
           return bookings.isEmpty
               ? const Center(child: Text('No bookings found'))
               : Padding(
-                  padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
                   child: ListView.builder(
                     padding: EdgeInsets.only(top: 8),
                     itemCount: bookings.length,
