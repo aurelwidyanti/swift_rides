@@ -41,6 +41,7 @@ dependencies:
   hugeicons: ^0.0.7
   syncfusion_flutter_datepicker: ^27.1.56
   google_fonts: ^6.2.1
+  form_field_validator: ^1.1.0
 
 dev_dependencies:
   flutter_test:
