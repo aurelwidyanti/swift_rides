@@ -54,15 +54,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: const CustomAppBar(
         title: "Profile",
         showBackButton: false,
+        backgroundColor: Color.fromRGBO(23, 92, 227, 1),
+        textColor: Colors.white,
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(16),
           child: Column(
             children: [
               Card(
                 semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -119,8 +120,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: 44,
                 child: CustomButton(
                   text: 'Logout',
+                  elevation: 2,
+                  textColor: Colors.red,
                   onPressed: () => _logout(),
-                  backgroundColor: Colors.red,
+                  backgroundColor: Colors.white,
                 ),
               ),
             ],
