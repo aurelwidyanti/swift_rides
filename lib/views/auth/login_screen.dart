@@ -1,10 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:swift_rides/helpers/sp_helper.dart';
 import 'package:swift_rides/services/api_sevices.dart';
 import 'package:swift_rides/utils/entrypoint.dart';
-import 'package:swift_rides/views/auth/register_screen.dart';
+import 'package:swift_rides/views/auth/account_setup/name_screen.dart';
 import 'package:swift_rides/views/auth/widgets/auth_text_field.dart';
 import 'package:swift_rides/widgets/custom_button.dart';
 
@@ -104,14 +105,15 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(24, 40, 24, 40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              padding: const EdgeInsets.only(top: 40),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -119,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                           fontWeight: FontWeight.w900,
                           fontSize: 32,
-                          color: const Color.fromRGBO(23, 93, 227, 1),
+                          color: const Color.fromRGBO(23, 92, 227, 1),
                         ),
                   ),
                   ClipOval(
@@ -132,83 +134,88 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 40),
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    AuthTextField(
-                      labelText: "Email",
-                      controller: _emailController,
-                      hintText: "example@mail.com",
-                      textInputAction: TextInputAction.next,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (value) =>
-                          value!.isEmpty ? "Email address is required" : null,
-                      focusNode: _emailFocusNode,
-                    ),
-                    const SizedBox(height: 20),
-                    AuthTextField(
-                      labelText: "Password",
-                      controller: _passwordController,
-                      hintText: "must be 8 password",
-                      obscureText: _obscureText,
-                      validator: (value) =>
-                          value!.isEmpty ? "Password is required" : null,
-                      focusNode: FocusNode(),
-                      onSuffixIconTap: () {
-                        setState(
-                          () {
-                            _obscureText = !_obscureText;
-                          },
-                        );
-                      },
-                    ),
-                    const SizedBox(height: 24),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 44,
-                      child: CustomButton(
-                        text: 'Login',
-                        onPressed: () => _login(context),
-                      ),
-                    ),
-                  ],
-                ),
+            ),
+            const Spacer(),
+            Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  AuthTextField(
+                    labelText: "Email",
+                    controller: _emailController,
+                    hintText: "example@mail.com",
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.emailAddress,
+                    validator: MultiValidator([
+                      RequiredValidator(errorText: "Email is requiressd"),
+                      EmailValidator(errorText: "Invalid email format"),
+                    ]).call,
+                    focusNode: _emailFocusNode,
+                  ),
+                  const SizedBox(height: 16),
+                  AuthTextField(
+                    labelText: "Password",
+                    controller: _passwordController,
+                    hintText: "must be 8 password",
+                    obscureText: _obscureText,
+                    validator: MultiValidator([
+                      RequiredValidator(errorText: "Password is required"),
+                      MinLengthValidator(8,
+                          errorText: "Password must be at least 8 characters"),
+                    ]).call,
+                    focusNode: FocusNode(),
+                    onSuffixIconTap: () {
+                      setState(
+                        () {
+                          _obscureText = !_obscureText;
+                        },
+                      );
+                    },
+                  ),
+                ],
               ),
-              const SizedBox(height: 24),
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don’t have account?",
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black45,
-                          fontSize: 15),
-                    ),
-                    const SizedBox(width: 4),
-                    GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegisterScreen(),
-                        ),
-                      ),
-                      child: const Text(
-                        "Register",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w800),
-                      ),
-                    ),
-                  ],
-                ),
+            ),
+            const SizedBox(height: 32),
+            SizedBox(
+              width: double.infinity,
+              height: 44,
+              child: CustomButton(
+                text: 'Login',
+                onPressed: () => _login(context),
               ),
-            ],
-          ),
+            ),
+            const Spacer(),
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Don’t have account?",
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black45,
+                        fontSize: 15),
+                  ),
+                  const SizedBox(width: 4),
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NameScreen(),
+                      ),
+                    ),
+                    child: const Text(
+                      "Register",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w800),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
