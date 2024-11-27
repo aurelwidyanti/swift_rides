@@ -20,19 +20,20 @@ class SearchScreen extends StatelessWidget {
           prefixIcon: HugeIcons.strokeRoundedSearch01,
         ),
       ),
-      body: SafeArea(
+      body: const Center(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+          padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Categories",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
               ),
-              const SizedBox(height: 4),
-              const Expanded(
+              SizedBox(height: 8),
+              Expanded(
                 child: SingleChildScrollView(
+                  padding: EdgeInsets.only(bottom: 16),
                   scrollDirection: Axis.vertical,
                   child: SearchFilter(),
                 ),
