@@ -17,7 +17,7 @@ class HistoryScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: "History",
         showBackButton: false,
-        backgroundColor: const Color.fromRGBO(23, 93, 227, 1),
+        backgroundColor: const Color.fromRGBO(23, 92, 227, 1),
         textColor: Colors.white,
         actions: [
           IconButton(

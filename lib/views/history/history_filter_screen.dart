@@ -21,10 +21,10 @@ class _HistoryFilterScreenState extends State<HistoryFilterScreen> {
       onPressed: () => onSelect(option),
       style: OutlinedButton.styleFrom(
         backgroundColor:
-            isSelected ? const Color.fromRGBO(23, 93, 227, 1) : Colors.white,
+            isSelected ? const Color.fromRGBO(23, 92, 227, 1) : Colors.white,
         side: BorderSide(
             color: isSelected
-                ? const Color.fromRGBO(23, 93, 227, 1)
+                ? const Color.fromRGBO(23, 92, 227, 1)
                 : Colors.black45),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
@@ -46,7 +46,7 @@ class _HistoryFilterScreenState extends State<HistoryFilterScreen> {
       appBar: const CustomAppBar(
           title: "Filter",
           showBackButton: true,
-          backgroundColor: Color.fromRGBO(23, 93, 227, 1),
+          backgroundColor: Color.fromRGBO(23, 92, 227, 1),
           textColor: Colors.white),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
@@ -58,7 +58,7 @@ class _HistoryFilterScreenState extends State<HistoryFilterScreen> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Color.fromRGBO(23, 93, 227, 1),
+                color: Color.fromRGBO(23, 92, 227, 1),
               ),
             ),
             const SizedBox(height: 8),
@@ -79,7 +79,7 @@ class _HistoryFilterScreenState extends State<HistoryFilterScreen> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Color.fromRGBO(23, 93, 227, 1),
+                color: Color.fromRGBO(23, 92, 227, 1),
               ),
             ),
             const SizedBox(height: 8),

@@ -79,7 +79,7 @@ class _EntrypointState extends State<Entrypoint> {
                   HugeIcon(
                     icon: _navitems[index]["icon"],
                     color: _selectedIndex == index
-                        ? const Color.fromRGBO(23, 93, 227, 1)
+                        ? const Color.fromRGBO(23, 92, 227, 1)
                         : const Color.fromARGB(255, 0, 0, 0),
                     size: 22,
                   ),
@@ -88,7 +88,7 @@ class _EntrypointState extends State<Entrypoint> {
                     _navitems[index]["title"],
                     style: TextStyle(
                       color: _selectedIndex == index
-                          ? const Color.fromRGBO(23, 93, 227, 1)
+                          ? const Color.fromRGBO(23, 92, 227, 1)
                           : const Color.fromARGB(255, 0, 0, 0),
                       fontSize: 12,
                       fontWeight: FontWeight.normal,

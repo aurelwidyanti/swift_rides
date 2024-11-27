@@ -46,8 +46,8 @@ class CarCard extends StatelessWidget {
                             : car.status == 'rented'
                                 ? 'Rented'
                                 : 'Maintenance',
-                        style: TextStyle(
-                          color: Color.fromRGBO(23, 93, 227, 1),
+                        style: const TextStyle(
+                          color: Color.fromRGBO(23, 92, 227, 1),
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
                           letterSpacing: 0.1,
@@ -57,7 +57,7 @@ class CarCard extends StatelessWidget {
                   ],
                 ),
                 Image.network(
-                  'https://d3a6-103-246-107-3.ngrok-free.app/storage/cars/${car.image!}',
+                  'https://7469-182-253-134-145.ngrok-free.app/storage/cars/${car.image!}',
                   width: 300,
                   height: 150,
                   fit: BoxFit.cover,
@@ -95,7 +95,7 @@ class CarCard extends StatelessWidget {
                           TextSpan(
                             text: 'IDR ${car.price! ~/ 1000}K',
                             style: const TextStyle(
-                              color: Color.fromRGBO(23, 93, 227, 1),
+                              color: Color.fromRGBO(23, 92, 227, 1),
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
                               letterSpacing: 0.14,
@@ -125,7 +125,7 @@ class CarCard extends StatelessWidget {
                       children: [
                         const HugeIcon(
                           icon: HugeIcons.strokeRoundedFuelStation,
-                          color: Color.fromRGBO(23, 93, 227, 1),
+                          color: Color.fromRGBO(23, 92, 227, 1),
                           size: 24,
                         ),
                         const SizedBox(width: 8),
@@ -145,7 +145,7 @@ class CarCard extends StatelessWidget {
                       children: [
                         const HugeIcon(
                           icon: HugeIcons.strokeRoundedUser,
-                          color: Color.fromRGBO(23, 93, 227, 1),
+                          color: Color.fromRGBO(23, 92, 227, 1),
                           size: 20,
                         ),
                         const SizedBox(width: 8),

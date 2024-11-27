@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.white,
                           shape: BoxShape.circle,
                           border: Border.all(
-                              color: const Color.fromRGBO(23, 93, 227, 1),
+                              color: const Color.fromRGBO(23, 92, 227, 1),
                               width: 6),
                         ),
                         child: InkWell(

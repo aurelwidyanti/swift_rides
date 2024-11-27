@@ -81,7 +81,7 @@ class CarDetailScreen extends StatelessWidget {
           child: Column(
             children: [
               Image.network(
-                'https://7f1f-149-113-94-119.ngrok-free.app/storage/cars/${car.image!}',
+                'https://7469-182-253-134-145.ngrok-free.app/storage/cars/${car.image!}',
                 width: double.infinity,
                 height: 200,
                 fit: BoxFit.cover,
@@ -118,7 +118,7 @@ class CarDetailScreen extends StatelessWidget {
                         TextSpan(
                           text: 'IDR ${car.price! ~/ 1000}K',
                           style: const TextStyle(
-                            color: Color.fromRGBO(23, 93, 227, 1),
+                            color: Color.fromRGBO(23, 92, 227, 1),
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 0.14,
@@ -251,7 +251,7 @@ class CarDetailScreen extends StatelessWidget {
                     TextSpan(
                       text: 'IDR ${car.price! ~/ 1000}K',
                       style: const TextStyle(
-                        color: Color.fromRGBO(23, 93, 227, 1),
+                        color: Color.fromRGBO(23, 92, 227, 1),
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                         letterSpacing: 0.14,
@@ -275,7 +275,7 @@ class CarDetailScreen extends StatelessWidget {
                       context, car.id!, car.name!, car.price!.toDouble());
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromRGBO(23, 93, 227, 1),
+                  backgroundColor: const Color.fromRGBO(23, 92, 227, 1),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
