@@ -18,7 +18,7 @@ class CarCard extends StatelessWidget {
         height: 300,
         child: Card(
           color: Colors.white,
-          elevation: 1,
+          elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
             side: const BorderSide(
@@ -57,7 +57,7 @@ class CarCard extends StatelessWidget {
                   ],
                 ),
                 Image.network(
-                  'https://7469-182-253-134-145.ngrok-free.app/storage/cars/${car.image!}',
+                  'https://dd4c-114-79-23-236.ngrok-free.app/storage/cars/${car.image!}',
                   width: 300,
                   height: 150,
                   fit: BoxFit.cover,
