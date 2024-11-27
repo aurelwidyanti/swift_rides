@@ -49,7 +49,7 @@ class PhoneScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
-          "Enter your phone number",
+          "",
           style: TextStyle(
             color: Colors.black,
             fontSize: 20,
@@ -66,6 +66,15 @@ class PhoneScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text(
+              "Almost there!\nPlease enter your phone number.",
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
+            ),
+            const SizedBox(height: 16),
             AuthTextField(
               labelText: "Phone Number",
               controller: _phoneController,

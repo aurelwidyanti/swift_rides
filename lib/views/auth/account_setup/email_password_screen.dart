@@ -19,7 +19,7 @@ class EmailPasswordScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
-          "Enter your email & password",
+          "",
           style: TextStyle(
             color: Colors.black,
             fontSize: 20,
@@ -36,6 +36,15 @@ class EmailPasswordScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text(
+              "Set up your login details, enter your email and create a secure password.",
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
+            ),
+            const SizedBox(height: 16),
             AuthTextField(
               labelText: "Email",
               controller: _emailController,

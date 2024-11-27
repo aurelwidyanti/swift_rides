@@ -15,7 +15,7 @@ class NameScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
-          "What should we call you?",
+          "",
           style: TextStyle(
             color: Colors.black,
             fontSize: 20,
@@ -32,6 +32,15 @@ class NameScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text(
+              "Please provide your full name so we know what to call you.",
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
+            ),
+            const SizedBox(height: 16),
             AuthTextField(
               labelText: "First Name",
               controller: _firstNameController,
