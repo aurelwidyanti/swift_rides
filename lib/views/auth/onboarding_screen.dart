@@ -67,6 +67,8 @@ class OnboardingScreen extends StatelessWidget {
                   height: 44,
                   child: CustomButton(
                     text: 'Login',
+                    backgroundColor: const Color.fromARGB(255, 237, 237, 237),
+                    textColor: Colors.black,
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
