@@ -49,7 +49,7 @@ class _HistoryFilterScreenState extends State<HistoryFilterScreen> {
           backgroundColor: Color.fromRGBO(23, 92, 227, 1),
           textColor: Colors.white),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
