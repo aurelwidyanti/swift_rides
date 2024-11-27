@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:swift_rides/helpers/sp_helper.dart';
 import 'package:swift_rides/utils/entrypoint.dart';
-import 'package:swift_rides/views/auth/login_screen.dart';
+import 'package:swift_rides/views/auth/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -33,7 +33,9 @@ class _SplashScreenState extends State<SplashScreen> {
           context,
           PageRouteBuilder(
             pageBuilder: (context, animation, secondaryAnimation) =>
-                accessToken == null ? const LoginScreen() : const Entrypoint(),
+                accessToken == null
+                    ? const OnboardingScreen()
+                    : const Entrypoint(),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               return FadeTransition(
@@ -50,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Color.fromRGBO(23, 93, 227, 1),
+      backgroundColor: Color.fromRGBO(23, 92, 227, 1),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
