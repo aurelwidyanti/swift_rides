@@ -76,12 +76,12 @@ class CarDetailScreen extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 0, 24, 0),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: SingleChildScrollView(
           child: Column(
             children: [
               Image.network(
-                'https://7469-182-253-134-145.ngrok-free.app/storage/cars/${car.image!}',
+                'https://dd4c-114-79-23-236.ngrok-free.app/storage/cars/${car.image!}',
                 width: double.infinity,
                 height: 200,
                 fit: BoxFit.cover,
